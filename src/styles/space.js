@@ -1,5 +1,5 @@
 // Usage padding, margin, top, bottom ...
-export const space = {
+const space = {
   px: '1px',
   0.5: '0.125rem',
   1: '0.25rem',
@@ -34,3 +34,5 @@ export const space = {
   80: '20rem',
   96: '24rem',
 };
+
+export default space;
