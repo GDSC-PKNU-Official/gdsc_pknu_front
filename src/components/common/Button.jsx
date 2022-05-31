@@ -26,7 +26,7 @@ const btnStyle = css`
     return (
       w &&
       css`
-        width: ${w};
+        width: ${w}rem;
       `
     );
   }}
@@ -36,7 +36,7 @@ const btnStyle = css`
     return (
       h &&
       css`
-        height: ${h};
+        height: ${h}rem;
       `
     );
   }}
@@ -52,8 +52,8 @@ const btnStyle = css`
   }}
 
   // 버튼 스타일
-  ${({ variant }) => {
-    switch (variant) {
+  ${props => {
+    switch (props.variant) {
       case 'solid':
         return css`
           background-color: ${props.color ? props.color : '#c4c4c4'};
@@ -87,7 +87,7 @@ const StyledLinkButton = styled(Link)`
 `;
 
 function Button(props) {
-  return props?.variant === 'link' ? <StyledLinkButton {...props}></StyledLinkButton> : <StyledButton {...props}></StyledButton>;
+  return props.islink === 'true' ? <StyledLinkButton {...props}></StyledLinkButton> : <StyledButton {...props}></StyledButton>;
 }
 
 export default Button;
