@@ -19,3 +19,15 @@ export const vCenter = css`
   display: flex;
   align-items: center;
 `;
+
+export const flexNone = css`
+  flex: none;
+`;
+
+export const fdirectCol = css`
+  flex-direction: column;
+`;
+
+export const flexGrow1 = css`
+  flex-grow: 1;
+`;
