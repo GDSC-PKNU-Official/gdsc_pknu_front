@@ -6,20 +6,27 @@ import { color } from '../../styles/color';
 import theme from '../../styles/theme';
 import space from '../../styles/space';
 
-const StyledButton = styled.button`
-  display: inline-flex;
+const initialStyle = css`
   align-items: center;
   justify-content: center;
   outline: none;
   border: none;
   border-radius: 20px;
   color: white;
-  font-weight: ${fontWeights.medium};
   cursor: pointer;
-
   height: 50px;
   width: 120px;
+`;
+
+const fontStyle = css`
+  font-weight: ${fontWeights.medium};
   font-size: ${fontSizes['2xl']};
+`;
+
+const StyledButton = styled.button`
+  ${initialStyle}
+
+  ${fontStyle}
 
   background: ${color.gray[400]};
 
