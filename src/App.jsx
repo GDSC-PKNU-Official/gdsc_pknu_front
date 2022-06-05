@@ -9,7 +9,12 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <h1>hi</h1>
+      <style>
+      </style>
+        <img className="img" alt="gdsc_logo" src="img/logo.png"/>
+        <img className="img" alt="gdsc_menu" src="img/menu.png"/>
+        <img className="img" alt="gdsc_login" src="img/login.png"/>
+        <img className="img" alt="gdsc_join" src="img/join.png"/>
     </ThemeProvider>
   );
 }
