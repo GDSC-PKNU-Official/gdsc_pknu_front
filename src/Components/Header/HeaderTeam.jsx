@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledTeamText = styled.p`
 position: absolute;
@@ -19,7 +20,7 @@ color: #575757;
 const HeaderTeam = () => {
   return (
     <React.StrictMode>
-      <StyledTeamText>Team</StyledTeamText>
+      <Link to = 'team'><StyledTeamText>Team</StyledTeamText></Link>
     </React.StrictMode>
   );
 }

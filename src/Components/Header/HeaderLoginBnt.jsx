@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledLoginBnt = styled.button`
 box-sizing: border-box;
@@ -11,29 +12,21 @@ top: 50px;
 border: 2px solid #4285F5;
 border-radius: 20px;
 background-color: white;
+cursor: pointer;
 `;
 
-const StyledLoginBntContent = styled.p`
-position: absolute;
-width: 56.8px;
-height: 22px;
-left: 1479.2px;
-top: 64px;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 23px;
-text-align: center;
-color: #4285F5;
-`;
+
 
 const HeaderLoginBnt = () => {
+  var click = () => {
+    console.log('Login 버튼 클릭!')
+  }
   return(
     <React.StrictMode>
-      <StyledLoginBnt></StyledLoginBnt>
-      <StyledLoginBntContent>Login</StyledLoginBntContent>
-    </React.StrictMode>
+      <Link to = './login'>
+        <StyledLoginBnt onClick={click}>Login</StyledLoginBnt>
+      </Link>
+      </React.StrictMode>
   );
 }
 

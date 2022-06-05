@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledFAQText = styled.p`
 position: absolute;
@@ -18,7 +19,7 @@ color: #575757;
 
 const HeaderFAQ = () => {
   return(
-    <StyledFAQText>FAQ</StyledFAQText>
+    <Link to = '/faq'><StyledFAQText>FAQ</StyledFAQText></Link>
   );
 }
 

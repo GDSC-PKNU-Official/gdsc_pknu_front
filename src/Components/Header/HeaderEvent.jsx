@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledEventText = styled.p`
 position: absolute;
@@ -20,7 +21,7 @@ color: #575757;
 
 const HeaderEvent = () => {
   return(
-    <StyledEventText>Event</StyledEventText>
+    <Link to = '/event'><StyledEventText>Event</StyledEventText></Link>
   );
 }
 
