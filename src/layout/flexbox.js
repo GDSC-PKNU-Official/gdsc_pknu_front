@@ -24,7 +24,7 @@ export const flexNone = css`
   flex: none;
 `;
 
-export const fdirectCol = css`
+export const flexDirectionCol = css`
   flex-direction: column;
 `;
 
