@@ -19,6 +19,7 @@ const btnStyle = css`
   color: ${color.white};
 
   border-radius: 2rem;
+  font-size: 2rem;
 
   ${btnPropsStyle}
 `;
