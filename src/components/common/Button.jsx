@@ -5,8 +5,85 @@ import { Link } from 'react-router-dom';
 
 import { color } from '../../styles/color';
 
+const btnWidthStyle = css`
+  ${({ width }) => {
+    return (
+      width &&
+      css`
+        width: ${width}rem;
+      `
+    );
+  }}
+`;
+
+const btnHeightStyle = css`
+  ${({ height }) => {
+    return (
+      height &&
+      css`
+        height: ${height}rem;
+      `
+    );
+  }}
+`;
+
+const btnBgColorStyle = css`
+  ${({ bgcolor }) => {
+    return (
+      bgcolor &&
+      css`
+        background-color: ${bgcolor};
+      `
+    );
+  }}
+`;
+
+const btnVariantSolid = bgcolor => {
+  return css`
+    background-color: ${bgcolor ? bgcolor : color.defaultColor};
+  `;
+};
+
+const btnVariantOutline = bgcolor => {
+  return css`
+    background-color: ${color.white};
+    border: 1px solid ${bgcolor ? bgcolor : color.defaultColor};
+    color: ${bgcolor ? bgcolor : color.defaultColor};
+  `;
+};
+
+const btnVariantGhost = bgcolor => {
+  return css`
+    background-color: ${color.white};
+    color: ${bgcolor ? bgcolor : color.defaultColor};
+  `;
+};
+
+const btnVariantStyle = css`
+  ${props => {
+    const { variant, bgcolor } = props;
+
+    switch (variant) {
+      case 'solid':
+        return btnVariantSolid(bgcolor);
+      case 'outline':
+        return btnVariantOutline(bgcolor);
+      case 'ghost':
+        return btnVariantGhost(bgcolor);
+      default:
+        return;
+    }
+  }}
+`;
+
+const btnPropsStyle = css`
+  ${btnWidthStyle}
+  ${btnHeightStyle}
+  ${btnBgColorStyle}
+  ${btnVariantStyle}
+`;
+
 const btnStyle = css`
-  // default 값
   border: none;
   outline: none;
   cursor: pointer;
@@ -14,68 +91,12 @@ const btnStyle = css`
   width: max-content;
   height: max-content;
 
-  background-color: #c4c4c4;
+  background-color: ${color.defaultColor};
   color: ${color.white};
 
-  border-radius: 20px;
+  border-radius: 2rem;
 
-  // button 속성 스타일
-
-  // 넓이
-  ${({ w }) => {
-    return (
-      w &&
-      css`
-        width: ${w}rem;
-      `
-    );
-  }}
-
-  // 높이
-  ${({ h }) => {
-    return (
-      h &&
-      css`
-        height: ${h}rem;
-      `
-    );
-  }}
-
-  // 색깔
-  ${({ color }) => {
-    return (
-      color &&
-      css`
-        background-color: ${color};
-      `
-    );
-  }}
-
-  // 버튼 스타일
-  ${props => {
-    switch (props.variant) {
-      case 'solid':
-        return css`
-          background-color: ${props.color ? props.color : '#c4c4c4'};
-        `;
-
-      case 'outline':
-        return css`
-          background-color: ${color.white};
-          border: 1px solid ${props.color ? props.color : '#c4c4c4'};
-          color: ${props.color ? props.color : '#c4c4c4'};
-        `;
-
-      case 'ghost':
-        return css`
-          background-color: ${color.white};
-          color: ${props.color ? props.color : '#c4c4c4'};
-        `;
-
-      default:
-        return;
-    }
-  }}
+  ${btnPropsStyle}
 `;
 
 const StyledButton = styled.button`
