@@ -1,0 +1,27 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "no-new": "off",
+    "no-console": "off",
+    "no-param-reassign": "off",
+    "no-alert": "off",
+    "no-undef": "off",
+    "import/extensions": "off",
+    "prefer-template": "off",
+    "max-depth": ["error", 2],
+    "max-lines-per-function": ["error", 15],
+    "eol-last": ["error", "always"]
+  }
+}
