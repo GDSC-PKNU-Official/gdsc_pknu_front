@@ -1,7 +1,5 @@
 const fonts = {
-  body: 'system-ui, sans-serif',
-  heading: 'Georgia, serif',
-  mono: 'Menlo, monospace',
+  body: "'Open Sans', sans-serif",
 };
 
 const fontSizes = {

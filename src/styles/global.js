@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { fonts } from './font';
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -31,6 +32,7 @@ html {
 }
 body {
   line-height: 1;
+  font-family: ${fonts.body};
 }
 ol, ul {
   list-style: none;
