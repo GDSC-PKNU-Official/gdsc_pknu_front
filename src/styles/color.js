@@ -4,6 +4,8 @@ export const color = {
   black: '#000',
   white: '#fff',
 
+  defaultColor: '#c4c4c4',
+
   primaryBlue: '#2196F3',
   primaryRed: '#F44336',
   primaryYellow: '#FFC107',
