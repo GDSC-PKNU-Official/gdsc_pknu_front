@@ -1,7 +1,14 @@
+// React 관련 라이브러리
 import React from 'react';
 
-import { ThemeProvider } from 'styled-components';
+// react-router-dom 관련 라이브러리
+import { Route, Routes } from 'react-router-dom';
 
+// styled-components 관련 라이브러리
+import { ThemeProvider } from 'styled-components';
+import Home from './pages/Home';
+
+// style 관련 파일
 import GlobalStyle from './styles/global';
 import theme from './styles/theme';
 
@@ -9,7 +16,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <h1>hi</h1>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </ThemeProvider>
   );
 }
