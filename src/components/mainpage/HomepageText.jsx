@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { fontSizes } from "../../styles/font";
+import { fontSizes, fontWeights } from "../../styles/font";
 import { color } from '../../styles/color';
+import space from '../../styles/space';
 
 const HomepageTextBox = styled.div`
 `;
@@ -10,15 +11,15 @@ const HomepageTextBox = styled.div`
 const Text = styled.p`
     white-space: pre-wrap;
     &:first-child {
-        font-weight: bold;
+        font-weight: ${fontWeights.bold};
     }
     &:nth-child(2) {
-        margin-top: 5rem;
-        color: ${color.gray[400]}
+        margin-top: ${space[20]};
+        color: ${color.gray[400]};
     }
     ${({fontSize}) => {
         return `font-size: ${fontSize}`
-    }}
+    }};
 `;
 
 const introduceWord = "Google\nDeveloper\nStudent Clubs\nPKNU";
