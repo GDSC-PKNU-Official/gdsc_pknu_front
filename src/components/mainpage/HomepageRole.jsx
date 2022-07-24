@@ -1,14 +1,31 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import space from '../../styles/space';
 import { color } from "../../styles/color";
 import { fontSizes, fontWeights } from '../../styles/font';
+
+const jumpingHeight = "-20%";
+const jumpingRotate = "5deg";
+
+const boxJump = keyframes`
+0% { transform: translate(0, 0) }
+50% { transform: translate(0, ${jumpingHeight}) }
+55% { transform: translate(0, ${jumpingHeight}) rotate(${jumpingRotate}); }
+60% { transform: translate(0, ${jumpingHeight}) rotate(-${jumpingRotate}); }
+65% { transform: translate(0, ${jumpingHeight}) rotate(${jumpingRotate}); }
+70% { transform: translate(0, ${jumpingHeight}) rotate(-${jumpingRotate}); }
+100% { transform: translate(0, 0) }
+`
 
 const RoleCard = styled.div`
     padding: ${space[6]};
     border-radius: ${space[7]};
     width: 200px;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    &:hover {
+        cursor: pointer;
+        animation: ${boxJump} 2s infinite ease-out alternate;
+    }
     ${({color}) => {
         return `border: 2px solid ${color}`;
     }};
