@@ -36,6 +36,17 @@ export const color = {
   sixthYellow: '#FFF8E1',
   sixthGreen: '#E8F5E9',
 
+  gdscBlue: '#4285F4',
+  gdscRed: '#EA4335',
+  gdscGreen: '#34A853',
+
+  gdsc: {
+    red: '#EA4335',
+    green: '#34A853',
+    blue: '#4285F4',
+    yellow: '#FBBC04',
+  },
+
   gray: {
     50: '#F7FAFC',
     100: '#EDF2F7',
