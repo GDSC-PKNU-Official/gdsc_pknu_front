@@ -74,10 +74,10 @@ const btnVariantStyle = css`
 `;
 
 const btnPropsStyle = css`
-  ${btnWidthStyle}
-  ${btnHeightStyle}
-  ${btnBgColorStyle}
-  ${btnVariantStyle}
+  ${btnWidthStyle};
+  ${btnHeightStyle};
+  ${btnBgColorStyle};
+  ${btnVariantStyle};
 `;
 
 export { btnPropsStyle };

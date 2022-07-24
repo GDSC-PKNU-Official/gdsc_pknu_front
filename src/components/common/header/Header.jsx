@@ -11,15 +11,15 @@ import HeaderButtonGroup from './HeaderButtonGruop';
 import HeaderBottomBorder from './HeaderBottomBorder';
 
 const HeaderContainer = styled.header`
-  ${vCenter}
-  ${flexDirectionCol}
+  ${vCenter};
+  ${flexDirectionCol};
   width: 100%;
   height: 10rem;
 `;
 
 const HeaderWrapper = styled.div`
-  ${vCenter}
-  ${flexNone}
+  ${vCenter};
+  ${flexNone};
   min-width: 102.4rem;
   height: 100%;
 

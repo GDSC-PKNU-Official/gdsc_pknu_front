@@ -8,7 +8,7 @@ import { flexNone } from '../../../layout/flexbox';
 import { Link } from 'react-router-dom';
 
 const HeaderTitleContainer = styled.h1`
-  ${flexNone}
+  ${flexNone};
 `;
 
 const HeaderLogo = styled.img`

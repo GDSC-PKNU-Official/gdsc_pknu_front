@@ -8,20 +8,20 @@ import HomepageText from './HomepageText';
 import space from '../../styles/space';
 
 const HomepageContainer = styled.div`
-    ${vCenter}
-    ${flexDirectionCol}
+    ${vCenter};
+    ${flexDirectionCol};
 `;
 
 const HomepageIntroduceWrapper = styled.div`
-    ${vCenter}
-    ${flexNone}
+    ${vCenter};
+    ${flexNone};
     margin-top: ${space[12]};
     padding-left: 20%;
 `;
 
 const HomepageRoleWrapper = styled.div`
-    ${vCenter}
-    ${flexNone}
+    ${vCenter};
+    ${flexNone};
     margin-top: ${space[20]};
     width: 60%;
     justify-content: space-between;
