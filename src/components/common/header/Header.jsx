@@ -7,7 +7,7 @@ import { vCenter, flexNone, flexDirectionCol } from '../../../layout/flexbox';
 
 import HeaderTitle from './HeaderTitle';
 import HeaderLinkGroup from './HeaderLinkGroup';
-import HeaderButtonGroup from './HeaderButtonGruop';
+import HeaderButtonGroup from './HeaderButtonGroup';
 import HeaderBottomBorder from './HeaderBottomBorder';
 
 const HeaderContainer = styled.header`

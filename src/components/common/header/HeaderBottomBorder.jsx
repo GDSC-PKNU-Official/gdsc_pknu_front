@@ -11,6 +11,7 @@ const HeaderBorderBox = styled.div`
   width: 100%;
   height: 0.8rem;
   min-width: 102.4rem;
+  z-index: 1;
 `;
 
 const HeaderBorderItem = styled.div`
