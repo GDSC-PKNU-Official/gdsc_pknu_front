@@ -21,14 +21,12 @@ const RoleCard = styled.div`
     padding: ${space[6]};
     border-radius: ${space[7]};
     width: 200px;
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     &:hover {
         cursor: pointer;
         animation: ${boxJump} 2s infinite ease-out alternate;
     }
-    ${({color}) => {
-        return `border: 2px solid ${color}`;
-    }};
+    
     ${({bgcolor}) => {
         return `background: ${bgcolor ? bgcolor: color.white}`
     }};

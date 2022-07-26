@@ -1,15 +1,17 @@
-// react 관련 라이브러리
 import React from 'react';
 import styled from 'styled-components';
-import { flexDirectionCol, flexNone, vCenter } from '../../layout/flexbox';
-import HomepageImg from './HomepageImg';
-import HomepageRole from './HomepageRole';
-import HomepageText from './HomepageText';
-import space from '../../styles/space';
+import { flexDirectionCol, flexNone, vCenter } from '../../../layout/flexbox';
+import HomepageImg from './HomePageImg';
+import HomepageRole from './HomePageRole';
+import HomepageText from './HomePageText';
+import space from '../../../styles/space';
 
 const HomepageContainer = styled.div`
     ${vCenter};
     ${flexDirectionCol};
+    height: 100vh;
+    margin-top: ${space[28]};
+    scroll-snap-align: start;
 `;
 
 const HomepageIntroduceWrapper = styled.div`
