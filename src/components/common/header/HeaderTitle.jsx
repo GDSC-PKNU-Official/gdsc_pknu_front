@@ -12,15 +12,15 @@ const HeaderTitleContainer = styled.h1`
 `;
 
 const HeaderLogo = styled.img`
-  width: 29.524rem;
-  height: 5.5rem;
+  width: 5rem;
+  height: 5rem;
 `;
 
 function HeaderTitle() {
   return (
     <HeaderTitleContainer>
       <Link to="/">
-        <HeaderLogo src={process.env.PUBLIC_URL + '/assets/logo/GDSCpknuLogo.png'} alt="GDSCpknu 로고" />
+        <HeaderLogo src={process.env.PUBLIC_URL + '/assets/logo/GDSC_Logo.svg'} alt="GDSCpknu 로고" />
       </Link>
     </HeaderTitleContainer>
   );
