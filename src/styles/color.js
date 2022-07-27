@@ -5,6 +5,7 @@ export const color = {
   white: '#fff',
 
   defaultColor: '#c4c4c4',
+  transparentWhite: 'background: rgba(255, 255, 255, 0.6)',
 
   primaryBlue: '#2196F3',
   primaryRed: '#F44336',

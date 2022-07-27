@@ -4,19 +4,20 @@ import { fontSizes, fontWeights } from "../../../styles/font";
 import { color } from '../../../styles/color';
 import space from '../../../styles/space';
 
-const HomepageTextBox = styled.div`
+const HomepageTextBox = styled.ul`
 `;
 
 
-const Text = styled.p`
+const Text = styled.li`
     white-space: pre-wrap;
+    font-family: 'googleSansDisplayRegular';
     &:first-child {
         font-weight: ${fontWeights.bold};
-    }
+    };
     &:nth-child(2) {
         margin-top: ${space[20]};
         color: ${color.gray[400]};
-    }
+    };
     ${({fontSize}) => {
         return `font-size: ${fontSize}`
     }};

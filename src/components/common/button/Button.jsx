@@ -15,7 +15,7 @@ const btnStyle = css`
   width: max-content;
   height: max-content;
 
-  background-color: ${color.defaultColor};
+  background: none;
   color: ${color.white};
 
   border-radius: 2rem;

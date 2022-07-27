@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { flexDirectionCol, flexNone, vCenter } from '../../../layout/flexbox';
+import { flexDirectionCol, vCenter } from '../../../layout/flexbox';
 import HomepageImg from './HomePageImg';
 import HomepageRole from './HomePageRole';
 import HomepageText from './HomePageText';
@@ -10,22 +10,22 @@ const HomepageContainer = styled.div`
     ${vCenter};
     ${flexDirectionCol};
     height: 100vh;
-    margin-top: ${space[28]};
     scroll-snap-align: start;
+    width: 60%;
+    margin: 0 auto;
 `;
 
 const HomepageIntroduceWrapper = styled.div`
     ${vCenter};
-    ${flexNone};
-    margin-top: ${space[12]};
-    padding-left: 20%;
+    margin-top: ${space[52]};
+    width: 100%;
+    justify-content: space-between;
 `;
 
 const HomepageRoleWrapper = styled.div`
     ${vCenter};
-    ${flexNone};
+    width: 100%;
     margin-top: ${space[20]};
-    width: 60%;
     justify-content: space-between;
     text-align: center;
     align-items: stretch;
