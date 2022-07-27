@@ -1,18 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// layout 관련 파일
-import { flexNone } from '../../../layout/flexbox';
-
 // style 관련
 import { color } from '../../../styles/color';
 
 // components 관련 파일
-import Button from '../button/Button';
 
-const HeaderLink = styled(Button)`
-  ${flexNone}
-
+const HeaderLink = styled.li`
+  margin-right: 13px;
   text-align: center;
 
   &:nth-child(2) {
@@ -25,22 +20,27 @@ const HeaderLink = styled(Button)`
     margin-left: 1rem;
   }
 
-  font-size: 2.4rem;
+  font-size: 1.5rem;
+`;
+
+const HeaderLinkUl = styled.ul`
+  display: flex;
+  align-items: center;
 `;
 
 function HeaderLinkGroup() {
   return (
-    <>
-      <HeaderLink width="10" variant="ghost" to="#" bgcolor={color.black} islink="true">
+    <HeaderLinkUl>
+      <HeaderLink variant="ghost" to="#" bgcolor={color.black} islink="true">
         Event
       </HeaderLink>
-      <HeaderLink width="10" variant="ghost" to="#" bgcolor={color.black} islink="true">
+      <HeaderLink variant="ghost" to="#" bgcolor={color.black} islink="true">
         Team
       </HeaderLink>
-      <HeaderLink width="10" variant="ghost" to="#" bgcolor={color.black} islink="true">
+      <HeaderLink variant="ghost" to="#" bgcolor={color.black} islink="true">
         FAQ
       </HeaderLink>
-    </>
+    </HeaderLinkUl>
   );
 }
 

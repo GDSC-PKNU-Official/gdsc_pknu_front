@@ -6,42 +6,49 @@ import styled from 'styled-components';
 import { vCenter, flexNone, flexDirectionCol } from '../../../layout/flexbox';
 
 import HeaderTitle from './HeaderTitle';
-// import HeaderLinkGroup from './HeaderLinkGroup';
+import HeaderLinkGroup from './HeaderLinkGroup';
 // import HeaderButtonGroup from './HeaderButtonGroup';
-import HeaderBottomBorder from './HeaderBottomBorder';
+// import HeaderBottomBorder from './HeaderBottomBorder';
 import { color } from '../../../styles/color';
 
 const HeaderContainer = styled.header`
   ${vCenter};
   ${flexDirectionCol};
-  width: 100%;
-  height: 7rem;
+  height: 10rem;
   position: fixed;
-  background: ${color.white};
-  z-index: 100;
-  opacity: 0.7;
+  width: 100vw;
+  background: ${color.transparentWhite};
+  z-index: 10;
 `;
 
 const HeaderWrapper = styled.div`
   ${vCenter};
   ${flexNone};
-  min-width: 102.4rem;
-  height: 100%;
+  width: 100%;
 
-  button + button {
-    margin-left: 1.4rem;
-  }
+  // button + button {
+  //   margin-left: 1.4rem;
+  // }
+`;
+
+const HeaderUl = styled.ul`
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 `;
 
 function Header() {
   return (
     <HeaderContainer>
       <HeaderWrapper>
-        <HeaderTitle />
-        {/* <HeaderLinkGroup /> */}
-        {/* <HeaderButtonGroup /> */}
+        <HeaderUl>
+          <HeaderTitle />
+          <HeaderLinkGroup />
+          {/* <HeaderButtonGroup /> */}
+        </HeaderUl>
       </HeaderWrapper>
-      <HeaderBottomBorder />
+      {/* <HeaderBottomBorder /> */}
     </HeaderContainer>
   );
 }
