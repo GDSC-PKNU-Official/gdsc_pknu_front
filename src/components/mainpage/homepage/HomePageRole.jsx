@@ -88,7 +88,7 @@ const GDSC_ROLES = [
 // eslint-disable-next-line max-lines-per-function
 const roleList = () => {
     return (
-        <RoleCard color={color.white} bgc olor={color.gdsc.yellow}>
+        <RoleCard color={color.white} bgcolor={color.gdsc.yellow}>
             <RoleText fontSize={fontSizes['5xl']} fontWeight={fontWeights.bold} color={color.white}>
                 Role
             </RoleText>
@@ -106,7 +106,7 @@ const roleList = () => {
             </RoleText>
         </RoleCard>
     )
-}
+};
 
 // eslint-disable-next-line max-lines-per-function
 const roleCards = () => {
