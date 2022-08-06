@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Header from '../components/common/header/Header';
-import Homepage from "../components/mainpage/Homepage";
+import Mainpage from '../components/mainpage/Mainpage';
 
 function Home() {
   return (
     <div>
       <Header />
-      <Homepage />
+      <Mainpage />
     </div>
   );
 }

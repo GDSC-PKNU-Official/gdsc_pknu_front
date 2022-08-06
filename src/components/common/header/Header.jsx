@@ -6,15 +6,20 @@ import styled from 'styled-components';
 import { vCenter, flexNone, flexDirectionCol } from '../../../layout/flexbox';
 
 import HeaderTitle from './HeaderTitle';
-import HeaderLinkGroup from './HeaderLinkGroup';
-import HeaderButtonGroup from './HeaderButtonGruop';
+// import HeaderLinkGroup from './HeaderLinkGroup';
+// import HeaderButtonGroup from './HeaderButtonGroup';
 import HeaderBottomBorder from './HeaderBottomBorder';
+import { color } from '../../../styles/color';
 
 const HeaderContainer = styled.header`
   ${vCenter};
   ${flexDirectionCol};
   width: 100%;
-  height: 10rem;
+  height: 7rem;
+  position: fixed;
+  background: ${color.white};
+  z-index: 100;
+  opacity: 0.7;
 `;
 
 const HeaderWrapper = styled.div`
@@ -33,8 +38,8 @@ function Header() {
     <HeaderContainer>
       <HeaderWrapper>
         <HeaderTitle />
-        <HeaderLinkGroup />
-        <HeaderButtonGroup />
+        {/* <HeaderLinkGroup /> */}
+        {/* <HeaderButtonGroup /> */}
       </HeaderWrapper>
       <HeaderBottomBorder />
     </HeaderContainer>

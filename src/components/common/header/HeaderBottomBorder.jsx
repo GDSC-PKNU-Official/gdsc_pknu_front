@@ -15,7 +15,6 @@ const HeaderBorderBox = styled.div`
 
 const HeaderBorderItem = styled.div`
   width: 100%;
-  height: 0.8rem;
   min-width: 25.6rem;
 
   ${({ bgcolor }) => {

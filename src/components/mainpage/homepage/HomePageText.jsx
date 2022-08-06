@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { fontSizes, fontWeights } from "../../styles/font";
-import { color } from '../../styles/color';
-import space from '../../styles/space';
+import { fontSizes, fontWeights } from "../../../styles/font";
+import { color } from '../../../styles/color';
+import space from '../../../styles/space';
 
 const HomepageTextBox = styled.div`
 `;

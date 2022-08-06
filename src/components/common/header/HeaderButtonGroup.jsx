@@ -7,7 +7,7 @@ import { color } from '../../../styles/color';
 // components 관련 파일
 import Button from '../button/Button';
 
-function HeaderButtonGruop() {
+function HeaderButtonGroup() {
   return (
     <>
       <Button width="12" height="5" variant="outline" bgcolor={color.primaryBlue}>
@@ -20,4 +20,4 @@ function HeaderButtonGruop() {
   );
 }
 
-export default HeaderButtonGruop;
+export default HeaderButtonGroup;
