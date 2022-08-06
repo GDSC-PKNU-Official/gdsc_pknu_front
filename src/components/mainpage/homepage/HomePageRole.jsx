@@ -15,7 +15,7 @@ const boxJump = keyframes`
 65% { transform: translate(0, ${jumpingHeight}) rotate(${jumpingRotate}); }
 70% { transform: translate(0, ${jumpingHeight}) rotate(-${jumpingRotate}); }
 100% { transform: translate(0, 0) }
-`
+`;
 
 const RoleCard = styled.div`
     padding: ${space[6]};
@@ -25,7 +25,7 @@ const RoleCard = styled.div`
     &:hover {
         cursor: pointer;
         animation: ${boxJump} 2s infinite ease-out alternate;
-    }
+    };
     
     ${({bgcolor}) => {
         return `background: ${bgcolor ? bgcolor: color.white}`

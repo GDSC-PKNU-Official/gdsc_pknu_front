@@ -15,8 +15,8 @@ const Dinosaur = styled.img`
     z-index: 11;
 `;
 
-const dinoMovingSpeed = 50;
-var DinoSwitch = false;
+const dinoMovingSpeed = 100;
+let DinoSwitch = false;
 
 // eslint-disable-next-line max-lines-per-function
 function DinoCharacter() {
