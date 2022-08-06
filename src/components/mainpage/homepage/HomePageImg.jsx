@@ -1,15 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const HomeLogoWrapper = styled.div`
+`;
+
 const HomeLogo = styled.img`
-    width: 45%;
+    width: 400px;
+    float: right;
 `;
 
 function HomepageImg() {
     return (
-        <>
-        <HomeLogo src="/assets/people/peopleIMG.svg" />
-    </>
+        <HomeLogoWrapper>
+            <HomeLogo src="/assets/people/peopleIMG.svg" />
+        </HomeLogoWrapper>
     )
 }
 

@@ -10,10 +10,10 @@ import Button from '../button/Button';
 function HeaderButtonGroup() {
   return (
     <>
-      <Button width="12" height="5" variant="outline" bgcolor={color.primaryBlue}>
+      <Button width="8" height="3" variant="outline" bgcolor={color.primaryBlue}>
         Login
       </Button>
-      <Button width="12" height="5">
+      <Button width="8" height="3">
         Join
       </Button>
     </>

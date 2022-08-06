@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Tmp = styled.div`
-    background-color: #b6d8f2;
     height: 100vh;
     display:flex;
     justify-content: center;
