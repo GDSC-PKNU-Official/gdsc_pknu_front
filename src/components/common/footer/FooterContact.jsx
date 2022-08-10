@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { color } from '../../../styles/color';
+import space from '../../../styles/space';
 
 const FooterContainer = styled.div`
+    color: ${color.gray[500]};
+    padding-bottom: ${space[6]};
+    border-bottom: 1px solid ${color.gray[400]};
 `;
 
 const Leader = {

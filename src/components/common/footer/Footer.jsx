@@ -6,12 +6,14 @@ import FooterContact from './FooterContact';
 import FooterCopyRight from './FooterCopyRight';
 import { flexDirectionCol } from '../../../layout/flexbox';
 import { color } from '../../../styles/color';
+import space from '../../../styles/space';
 
 const FooterContainer = styled.footer`
     ${flexDirectionCol};
     width: 100vw;
+    padding-top: ${space[10]};
+    padding-bottom: ${space[10]};
     background: ${color.gray[300]};
-    border-top: 1px solid black;
 `;
 
 const FooterWrapper = styled.div`
