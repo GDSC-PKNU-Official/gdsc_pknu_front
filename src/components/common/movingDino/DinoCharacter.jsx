@@ -12,7 +12,6 @@ const DinoWrapper = styled.div`
 `;
 
 const Dinosaur = styled.img`
-    z-index: 11;
 `;
 
 const dinoMovingSpeed = 100;

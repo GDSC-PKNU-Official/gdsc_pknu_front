@@ -7,11 +7,11 @@ const DinoContainer = styled.div`
     width: 100%;
     margin: 0 auto;
     top: 1px;
+    z-index: 11;
 `;
 
 const DinoMap = styled.div`
     margin: 0 auto;
-    z-index: 10;
     height: 100px;
     opacity: 0.5;
 `;

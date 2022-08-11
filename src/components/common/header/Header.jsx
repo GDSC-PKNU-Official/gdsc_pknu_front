@@ -14,11 +14,11 @@ import { color } from '../../../styles/color';
 const HeaderContainer = styled.header`
   ${vCenter};
   ${flexDirectionCol};
-  height: 10rem;
   position: fixed;
   width: 100vw;
-  background: ${color.transparentWhite};
+  background: ${color.white};
   z-index: 10;
+  box-shadow: rgb(0 0 0 / 5%) 0px 6px 24px 0px, rgb(0 0 0 / 8%) 0px 0px 0px 1px;
 `;
 
 const HeaderWrapper = styled.div`
