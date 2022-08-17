@@ -63,6 +63,16 @@ a {
 *::after {
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: "googleSansDisplayBold";
+  src: url("/assets/font/GoogleSans-Bold-v1.27.ttf");
+};
+
+@font-face {
+  font-family: "googleSansDisplayRegular";
+  src: url("/assets/font/GoogleSansDisplay-Regular-v1.27.ttf");
+};
 `;
 
 export default GlobalStyle;
