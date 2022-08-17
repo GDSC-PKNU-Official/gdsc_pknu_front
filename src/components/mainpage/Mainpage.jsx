@@ -1,6 +1,7 @@
 /* eslint-disable max-lines-per-function */
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
+import Footer from '../common/footer/Footer';
 // import { color } from '../../styles/color';
 import Homepage from './homepage/HomePage';
 import SecondPage from './secondpage/SecondPage';
@@ -33,6 +34,7 @@ function Mainpage() {
                     <Homepage />
                     <SecondPage />
                     <SecondPage />
+                    <Footer />
                 </div>
             </Suspense>
         </MainpageContainer>
