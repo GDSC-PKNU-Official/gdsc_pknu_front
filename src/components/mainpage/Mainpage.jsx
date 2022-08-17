@@ -5,6 +5,7 @@ import Footer from '../common/footer/Footer';
 // import { color } from '../../styles/color';
 import Homepage from './homepage/HomePage';
 import SecondPage from './secondpage/SecondPage';
+import ThirdPage from './thirdpage/ThirdPage';
 
 const MainpageContainer = styled.div`
     overflow-y: auto;
@@ -33,7 +34,7 @@ function Mainpage() {
                 <div className={'scrollWrapper'}>
                     <Homepage />
                     <SecondPage />
-                    <SecondPage />
+                    <ThirdPage />
                     <Footer />
                 </div>
             </Suspense>
