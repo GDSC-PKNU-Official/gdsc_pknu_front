@@ -28,8 +28,6 @@ function ThirdPage(){
             <ThirdPageText/>
             <ThirdPageCardGroup>
                 <ThirdPageCard />
-                <ThirdPageCard />
-                <ThirdPageCard />
             </ThirdPageCardGroup>
         </ThirdPageContainer>
     );
