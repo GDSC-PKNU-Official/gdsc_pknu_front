@@ -38,16 +38,16 @@ function TestPage() {
             <Div>
                 <Img src={process.env.PUBLIC_URL + '/assets/logo/GDSC_Intro.svg'} alt="GDSCpknu 로고" />
             </Div>
-            <Text color={color.gdscRed}>
+            <Text color={color.gdsc.red}>
                 G
             </Text>
-            <Text color={color.gdscBlue}>
+            <Text color={color.gdsc.blue}>
                 D
             </Text>
-            <Text color={color.gdscGreen}>
+            <Text color={color.gdsc.green}>
                 S
             </Text>
-            <Text color={color.gdscYellow}>
+            <Text color={color.gdsc.yellow}>
                 C
             </Text>
         </Tmp>
