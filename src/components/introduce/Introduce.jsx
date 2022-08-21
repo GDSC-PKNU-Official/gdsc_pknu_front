@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+/* eslint-disable max-depth */
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const IntroduceContainer = styled.div`
@@ -70,8 +71,7 @@ const def = {
     }
 };
 
-let enabled = new Map();
-let disabled = new Map();
+const isAmong = (num, top, bottom) => num >= top && num <= bottom;
 
 const applyStyle = (element, styleName, value, unit = "px") => {
     if (styleName === "translateY") {
@@ -85,7 +85,7 @@ const applyStyle = (element, styleName, value, unit = "px") => {
     element.style[styleName] = value;
 }
 
-const applyStyles = (currentPos, refname, styles, r, unit = "px") {
+const applyStyles = (currentPos, refname, styles, r, unit = "px") => {
     for (const style of Object.keys(styles)) {
         const { topValue, bottomValue } = styles[style];
         const calc = (bottomValue - topValue) * r + topValue;
@@ -103,9 +103,9 @@ const applyAllAnimation = (currentPos, refname) => {
             if (!animation.enabled) animation.enabled = true;
         } else if (!isIn && animation.enabled) {
             if(currentPos <= a_top) {
-                this.applyStyles(currentPos, refname, styles, 0);
+                applyStyles(currentPos, refname, styles, 0);
             } else if (currentPos >= a_bottom) {
-                this.applyStyles(currentPos, refname, styles, 1);
+                applyStyles(currentPos, refname, styles, 1);
             }
             animation.enabled = false;
         }
@@ -117,113 +117,111 @@ const applyAllAnimation = (currentPos, refname) => {
     }
 }
 
-const initAnimation = () => {
-    // Sticky Conainer 의 높이를 설정함.
-    this.$refs["sticky-container"].style.height = `${def.height}px`;
 
-    // disabled, enabled 를 비움.
-    disabled.clear();
-    enabled.clear();
 
-    // 모든 요소를 disabled 에 넣음.
-    for (const refname of Object.keys(def.elements)) {
-      disabled.set(refname, def.elements[refname]);
-    }
 
-    // 각 애니메이션을 enabled == false 로 만듬.
-    for (const refname of Object.keys(def.animations)) {
-      for (const animation of def.animations[refname]) {
-        animation.enabled = false;
-      }
-    }
-
-    // 초기 스타일 적용
-    disabled.forEach((obj, refname) => {
-      Object.keys(obj.topStyle).forEach((styleName) => {
-        const pushValue = obj.topStyle[styleName];
-        this.$refs[refname].style[styleName] = pushValue;
-      });
-    });
-    // 이미 요소의 범위 및 애니메이션의 범위에 있는 것들을 렌더링하기 위해
-      // 임의로 스크롤 이벤트 핸들러를 한 번 실행시킴.
-      this.onScroll();
-}
-
-const onScroll = () => {
-    // 현재 스크롤 위치 파악
-    const scrollTop = window.scrollY || window.pageYOffset;
-    const currentPos = scrollTop + window.innerHeight / 2;
-
-    // disabled 순회하며 활성화할 요소 찾기.
-    disabled.forEach((obj, refname) => {
-        // 만약 칸에 있다면 해당 요소 활성화
-        if (
-        isAmong(currentPos, obj.top, obj.bottom)
-        ) {
-        enabled.set(refname, obj);
-        this.$refs[refname].classList.remove("disabled");
-        this.$refs[refname].classList.add("enabled");
-        disabled.delete(refname);
-        }
-    });
-
-    // enabled 순회하면서 헤제할 요소를 체크
-    enabled.forEach((obj, refname) => {
-        const { top, bottom, topStyle, bottomStyle } = obj;
-        // console.log(`${top}, ${bottom}, ${topStyle}, ${bottomStyle}`);
-        // 범위 밖에 있다면
-        if (!isAmong(currentPos, top, bottom)) {
-        // 위로 나갔다면 시작하는 스타일 적용
-        if (currentPos <= top) {
-            Object.keys(topStyle).forEach((styleName) => {
-            applyStyle(this.$refs[refname], styleName, topStyle[styleName]);
-            });
-        }
-        // 아래로 나갔다면 끝나는 스타일적용
-        else if (currentPos >= bottom) {
-            Object.keys(bottomStyle).forEach((styleName) => {
-                applyStyle(
-                    this.$refs[refname],
-                    styleName,
-                    bottomStyle[styleName]
-            );
-            // this.$refs[refname].style[styleName] = bottomStyle[styleName];
-            });
-        }
-
-        // 리스트에서 삭제하고 disabled로 옮김.
-        disabled.set(refname, obj);
-        this.$refs[refname].classList.remove("enabled");
-        this.$refs[refname].classList.add("disabled");
-        enabled.delete(refname);
-        }
-        
-        // enable 순회중, 범위 내부에 제대로 있다면 각 애니메이션 적용시키기.
-        else {
-            this.applyAllAnimation(currentPos, refname);
-        }
-    });
-}
 
 function Introduce() {
+    const [enabled, setEnabled] = useState();
+    const [disabled, setDisabled] = useState();
+    const stickyContainer = useRef();
+    const sl1 = useRef();
+
+    const initAnimation = () => {
+        // Sticky Conainer 의 높이를 설정함.
+        stickyContainer.current.style.height = `${def.height}px`;
+    
+        // disabled, enabled 를 비움.
+        setEnabled(new Map());
+        setDisabled(new Map());
+    
+        // 모든 요소를 disabled 에 넣음.
+        for (const refname of Object.keys(def.elements)) {
+          setDisabled((oldArray) => [...oldArray, (refname, def.elements[refname])]);
+        }
+    
+        // 각 애니메이션을 enabled == false 로 만듬.
+        for (const refname of Object.keys(def.animations)) {
+          for (const animation of def.animations[refname]) {
+            animation.enabled = false;
+          }
+        }
+    
+        // 초기 스타일 적용
+        disabled.forEach((obj, refname) => {
+          Object.keys(obj.topStyle).forEach((styleName) => {
+            const pushValue = obj.topStyle[styleName];
+            refname.current.style.styleName = pushValue;
+          });
+        });
+        // 이미 요소의 범위 및 애니메이션의 범위에 있는 것들을 렌더링하기 위해
+        // 임의로 스크롤 이벤트 핸들러를 한 번 실행시킴.
+        onScroll();
+    }
+
+    const onScroll = () => {
+        // 현재 스크롤 위치 파악
+        const scrollTop = window.scrollY || window.pageYOffset;
+        const currentPos = scrollTop + window.innerHeight / 2;  // 현재 화면의 중앙을 가리킴 
+    
+        // disabled 순회하며 활성화할 요소 찾기.
+        disabled.forEach((obj, refname) => {
+            // 만약 칸에 있다면 해당 요소 활성화
+            if (isAmong(currentPos, obj.top, obj.bottom)) {
+                setEnabled(refname, obj);
+                refname.classList.remove("disabled");
+                refname.classList.add("enabled");
+                disabled.delete(refname);
+            }
+        });
+    
+        // enabled 순회하면서 해제할 요소를 체크
+        enabled.forEach((obj, refname) => {
+            const { top, bottom, topStyle, bottomStyle } = obj;
+            console.log(`${top}, ${bottom}, ${topStyle}, ${bottomStyle}`);
+            // 범위 밖에 있다면
+            if (!isAmong(currentPos, top, bottom)) {
+                // 위로 나갔다면 시작하는 스타일 적용
+                if (currentPos <= top) {
+                    Object.keys(topStyle).forEach((styleName) => {
+                        applyStyle(refname, styleName, topStyle[styleName]);
+                });
+            }
+            // 아래로 나갔다면 끝나는 스타일적용
+            else if (currentPos >= bottom) {
+                Object.keys(bottomStyle).forEach((styleName) => {
+                    applyStyle(refname, styleName, bottomStyle[styleName]);
+                    // this.$refs[refname].style[styleName] = bottomStyle[styleName];
+                });
+            }
+    
+            // 리스트에서 삭제하고 disabled로 옮김.
+            disabled.set(refname, obj);
+            refname.classList.remove("enabled");
+            refname.classList.add("disabled");
+            enabled.delete(refname);
+            }
+            
+            // enable 순회중, 범위 내부에 제대로 있다면 각 애니메이션 적용시키기.
+            else {
+                applyAllAnimation(currentPos, refname);
+            }
+        });
+    }
+
     const outerDivRef = useRef();
     useEffect(() => {
         initAnimation();
-        const wheelHandler = (e) => {
-            e.preventDefault();
-            onScroll();
-        }
 
         const outerDivRefCurrent = outerDivRef.current;
-        outerDivRefCurrent.addEventListener("wheel", wheelHandler);
+        outerDivRefCurrent.addEventListener("wheel", onScroll);
         return () => {
-            outerDivRefCurrent.removeEventListener("wheel", wheelHandler);
+            outerDivRefCurrent.removeEventListener("wheel", onScroll);
         }
     })    
 
-
     return (
-        <IntroduceContainer>
+        <IntroduceContainer ref={stickyContainer}>
             <IntroduceWrapper>
                 <SlideContainer>
                     <Slide ref={sl1}>
