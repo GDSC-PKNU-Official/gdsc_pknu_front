@@ -20,7 +20,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route paht="/introduce" element={<Introduce />} />
+        <Route path="/introduce" element={<Introduce />} />
       </Routes>
     </ThemeProvider>
   );

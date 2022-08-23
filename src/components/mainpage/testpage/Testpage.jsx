@@ -28,7 +28,7 @@ const Text = styled.p`
     font-family: 'googleSansDisplayRegular';
     font-weight: ${fontWeights.black};
     ${({color}) => {
-        return `color: ${color ? color: color.white}`
+        return `color: ${color}`
     }};
 `;
 
