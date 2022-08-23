@@ -1,7 +1,17 @@
 /* eslint-disable max-depth */
 import React, { useEffect, useRef } from 'react';
 import bezierEasing from "https://cdn.skypack.dev/bezier-easing@2.1.0";
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { fontSizes } from '../../styles/font';
+
+const upDown = keyframes`
+    from{
+        transform: translatey(0px);
+    }
+    to{
+        transform: translatey(-20px);
+    }
+`;
 
 const IntroduceContainer = styled.div`
 `;
@@ -30,7 +40,8 @@ const Slide = styled.div`
 
 const Scdown = styled.div`
     position: absolute;
-    padding: 30px 0;
+    padding: 40px 0;
+    font-size: ${fontSizes['3xl']};
     width: 100%;
     height: 50px;
     text-align: center;
@@ -38,6 +49,7 @@ const Scdown = styled.div`
 `;
 
 const ScdownText = styled.div`
+    animation: ${upDown} 1.4s infinite ease-in-out alternate;
 `;
 
 const SlideBigText = styled.div`
@@ -93,7 +105,7 @@ const def = {
               opacity: 0,
               translateY: 60
             }
-          },
+        },
           sl3: {
             top: 3300,
             bottom: 4600,
@@ -103,7 +115,7 @@ const def = {
             bottomStyle: {
               opacity: 0
             }
-          },
+        },
     },
     animations: {        // 애니메이션을 적용할 요소. 애니메이션은 여러 개가 될 수 있기에 배열로 처리 
         sl1: [
@@ -336,6 +348,7 @@ function Introduce() {
                 enabled.set(refname, obj);
                 // arr.get(refname).classList.remove("disabled");
                 // arr.get(refname).classList.add("enabled");
+                arr.get(refname).current.style.display = 'block';
                 disabled.delete(refname);
             }
         });
@@ -360,8 +373,7 @@ function Introduce() {
     
             // 리스트에서 삭제하고 disabled로 옮김.
             disabled.set(refname, obj);
-            // arr.get(refname).classList.remove("enabled");
-            // arr.get(refname).classList.add("disabled");
+            arr.get(refname).current.style.display = 'none';
             enabled.delete(refname);
             }
             
