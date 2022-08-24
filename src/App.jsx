@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 
 // styled-components 관련 라이브러리
 import { ThemeProvider } from 'styled-components';
+import Memberpage from './components/memberpage/memberpage';
 import Home from './pages/Home';
 
 // style 관련 파일
@@ -19,6 +20,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/member" element={<Memberpage />} />
       </Routes>
     </ThemeProvider>
   );

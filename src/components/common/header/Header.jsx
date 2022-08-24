@@ -9,14 +9,14 @@ import HeaderTitle from './HeaderTitle';
 import HeaderLinkGroup from './HeaderLinkGroup';
 // import HeaderButtonGroup from './HeaderButtonGroup';
 // import HeaderBottomBorder from './HeaderBottomBorder';
-import { color } from '../../../styles/color';
 
 const HeaderContainer = styled.header`
   ${vCenter};
   ${flexDirectionCol};
   position: fixed;
   width: 100vw;
-  background: ${color.white};
+  height: 70px;
+  background: none;
   z-index: 10;
   box-shadow: rgb(0 0 0 / 5%) 0px 6px 24px 0px, rgb(0 0 0 / 8%) 0px 0px 0px 1px;
 `;
@@ -25,14 +25,12 @@ const HeaderWrapper = styled.div`
   ${vCenter};
   ${flexNone};
   width: 100%;
-
-  // button + button {
-  //   margin-left: 1.4rem;
-  // }
+  height: 100%;
 `;
 
 const HeaderUl = styled.ul`
-  width: 60%;
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
