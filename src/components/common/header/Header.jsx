@@ -7,8 +7,6 @@ import { vCenter, flexNone, flexDirectionCol } from '../../../layout/flexbox';
 
 import HeaderTitle from './HeaderTitle';
 import HeaderLinkGroup from './HeaderLinkGroup';
-// import HeaderButtonGroup from './HeaderButtonGroup';
-// import HeaderBottomBorder from './HeaderBottomBorder';
 
 const HeaderContainer = styled.header`
   ${vCenter};
@@ -43,10 +41,8 @@ function Header() {
         <HeaderUl>
           <HeaderTitle />
           <HeaderLinkGroup />
-          {/* <HeaderButtonGroup /> */}
         </HeaderUl>
       </HeaderWrapper>
-      {/* <HeaderBottomBorder /> */}
     </HeaderContainer>
   );
 }

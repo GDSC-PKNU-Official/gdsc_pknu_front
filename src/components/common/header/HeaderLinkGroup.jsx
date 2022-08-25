@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 // style 관련
@@ -33,17 +34,25 @@ const HeaderLinkUl = styled.ul`
 function HeaderLinkGroup() {
   return (
     <HeaderLinkUl>
-      <HeaderLink variant="ghost" to="#" bgcolor={color.black} islink="true">
-        소개
+      <HeaderLink bgcolor={color.black}>
+        <Link to="/#">
+          소개
+        </Link>
       </HeaderLink>
-      <HeaderLink variant="ghost" to="/member" bgcolor={color.black} islink="true">
-        멤버
+      <HeaderLink bgcolor={color.black} >
+        <Link to="/member">
+          멤버
+        </Link>
       </HeaderLink>
-      <HeaderLink variant="ghost" to="#" bgcolor={color.black} islink="true">
-        행사
+      <HeaderLink bgcolor={color.black}>
+        <Link to="/#">
+          행사
+        </Link>
       </HeaderLink>
-      <HeaderLink variant="ghost" to="#" bgcolor={color.black} islink="true">
-        FAQ
+      <HeaderLink bgcolor={color.black}>
+        <Link to="/#">
+          FAQ
+        </Link>
       </HeaderLink>
     </HeaderLinkUl>
   );
