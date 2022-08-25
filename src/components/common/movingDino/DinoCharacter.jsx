@@ -8,10 +8,12 @@ const DinoAnimator = keyframes`
 `;
 
 const DinoWrapper = styled.div`
-    animation: ${DinoAnimator} 10s infinite linear;
+    animation: ${DinoAnimator} 14s infinite linear;
 `;
 
 const Dinosaur = styled.img`
+    width: 35px;
+    height: 35px;
 `;
 
 const dinoMovingSpeed = 100;
