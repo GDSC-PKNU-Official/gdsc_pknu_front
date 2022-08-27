@@ -11,7 +11,7 @@ const ThirdPageCardItem = styled.li`
     white-space: normal;
     width:30%;
     height:100%;
-    margin:${space['5']};
+    margin:0 ${10/6}%;
     overflow:hidden;
     border-radius:5%;
     box-shadow: rgba(66, 133, 244, 0.16) 0px 3px 6px, rgba(66, 133, 244, 0.23) 0px 3px 6px;
@@ -23,7 +23,6 @@ const ThirdPageCardText = styled.p`
     width:100%;
     padding:${space[10]};
 `;
-
 const ThirdPageCardTextTitle = styled.h4`
     font-size:${fontSizes['4xl']};
     color:${color.black};
@@ -33,68 +32,49 @@ const ThirdPageCardTextTitle = styled.h4`
 
 const ThirdPageCardItemGroup = styled.div`
     width:100%;
+    height:100%;
+    padding:${space[6]} 0;
     display:flex;
-    justify-content: center;
     overflow:hidden;
+    justify-content: center;
 `;
 const ThirdPageCardSlideGroup = styled.ul`
+    font-size:0;
     width:100%;
     height:100%;
     white-space: nowrap;
     padding:0;
 `;
 
+const ThirdPageCardImgGroup = styled.div`
+    width:100%;
+    height:60%;
+`;
+
 const ThirdPageCardImg = styled.img`
     width:100%;
-    height:80%;
+    height:100%;
 `;
 
 const GDSC_GROWTH = [
     {
-        id: "TechTalk",
         title: "테크톡",
         text: "GDSC PKNU 자체의 기술세미나",
         img: "/assets/img/테크톡.jpg"
     },
     {
-        id: "Codelab",
         title: "코드랩",
         text: "프로그래밍 언어를 단계적으로 공부 및 실습",
-        img: "/assets/img/테크톡.jpg"
+        img: "/assets/img/코드랩.jpg"
     },
     {
-        id: "Conference",
         title: "컨퍼런스",
         text: "전문적인 주제에 대한 토론 및 발표",
-        img: "/assets/img/테크톡.jpg"   
-    },
-    {
-        id: "4",
-        title: "컨퍼런스",
-        text: "전문적인 주제에 대한 토론 및 발표",
-        img: "/assets/img/테크톡.jpg"   
-    },
-    {
-        id: "5",
-        title: "코드랩",
-        text: "프로그래밍 언어를 단계적으로 공부 및 실습",
-        img: "/assets/img/테크톡.jpg"   
-    },
-    {
-        id: "6",
-        title: "컨퍼런스",
-        text: "전문적인 주제에 대한 토론 및 발표",
-        img: "/assets/img/테크톡.jpg"   
-    },
-    {
-        id: "7",
-        title: "컨퍼런스",
-        text: "전문적인 주제에 대한 토론 및 발표",
-        img: "/assets/img/테크톡.jpg"   
+        img: "/assets/img/컨퍼런스.jpg"   
     }
 ];
 const ButtonGroup = styled.div`
-    display:flex;
+    display:${props=>props.itemLength>=3?"none":"flex"};
     justify-content: center;
 `;
 
@@ -118,11 +98,13 @@ const SliderButton = styled.button`
     }
 `;
 
-function GrowthCards () {
-    const growthCard = GDSC_GROWTH.map(growth => {    
+const growthCards = () => {
+    const growthCard = GDSC_GROWTH.map((growth,index) => {    
         return(
-            <ThirdPageCardItem key={growth.id}>
-                <ThirdPageCardImg src={growth.img} alt={growth.title}/>
+            <ThirdPageCardItem key={index}>
+                <ThirdPageCardImgGroup>
+                    <ThirdPageCardImg src={growth.img} alt={growth.title}/>
+                </ThirdPageCardImgGroup>
                 <ThirdPageCardText>
                     <ThirdPageCardTextTitle>{growth.title}</ThirdPageCardTextTitle>
                     {growth.text}
@@ -156,17 +138,17 @@ function ThirdPageCard(){
 
     useEffect(()=>{
         slideRef.current.style.transition = 'all 0.5s ease-in-out';
-        slideRef.current.style.transform = `translateX(-${currentSlide*32}%)`;   
+        slideRef.current.style.transform = `translateX(-${currentSlide*(30+(10/6*2))}%)`;   
     },[currentSlide]);
 
     return(
             <>
                 <ThirdPageCardItemGroup>
                     <ThirdPageCardSlideGroup ref={slideRef}>
-                    <GrowthCards/>
+                        {growthCards()}
                     </ThirdPageCardSlideGroup>
                 </ThirdPageCardItemGroup>
-                <ButtonGroup>
+                <ButtonGroup itemLength={GDSC_GROWTH.length} >
                     <SliderButton onClick={PrevSlide}>&lt;</SliderButton>
                     <SliderButton onClick={NextSlide}>&gt;</SliderButton>
                 </ButtonGroup>
