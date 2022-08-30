@@ -20,14 +20,38 @@ const HeaderLogo = styled.img`
 `;
 
 const GDSCText = styled.h3`
-&:first-child {
+  font-family: 'googleSansDisplayRegular';
+
+  &:first-child {
     font-size: 14px;
     padding-bottom: 2px;
+    @media(max-width:675px) {
+      display: none;
+    }
   };
   &:nth-child(2) {
     font-size: 10px;
+    @media(max-width:675px) {
+      display: none;
+    }
   };
-  font-family: 'googleSansDisplayRegular';
+  &:nth-child(3) {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: 1px;
+    display: none;
+    @media(max-width:675px) {
+      display: block;
+    }
+  }
+  &:nth-child(4) {
+    font-size: 1rem;
+    display: none;
+    padding-left: 2px;
+    @media(max-width:675px) {
+      display: block;
+    }
+  }
 `;
 
 const Div = styled.div`
@@ -47,11 +71,17 @@ function HeaderTitle() {
         </Div>
         <Div>
           <GDSCText>
-          Google Developer Student Clubs
-        </GDSCText>
-        <GDSCText>
-          Pukyong University
-        </GDSCText>
+            Google Developer Student Clubs
+          </GDSCText>
+          <GDSCText>
+            PuKyong National University
+          </GDSCText>
+          <GDSCText>
+            GDSC
+          </GDSCText>
+          <GDSCText>
+            PKNU
+          </GDSCText>
         </Div>
       </Link>
       

@@ -6,14 +6,14 @@ const DinoContainer = styled.div`
     position: fixed;
     width: 100%;
     margin: 0 auto;
-    top: 1px;
-    z-index: 11;
+    top: 40px;
+    z-index: 1;
 `;
 
 const DinoMap = styled.div`
     margin: 0 auto;
     height: 100px;
-    opacity: 0.5;
+    opacity: 0.4;
 `;
 
 function Dino() {

@@ -65,13 +65,18 @@ a {
 }
 
 @font-face {
-  font-family: "googleSansDisplayBold";
+  font-family: "googleSansBold";
   src: url("/assets/font/GoogleSans-Bold-v1.27.ttf");
 };
 
 @font-face {
   font-family: "googleSansDisplayRegular";
   src: url("/assets/font/GoogleSansDisplay-Regular-v1.27.ttf");
+};
+
+@font-face {
+  font-family: "googleSansDisplayBold";
+  src: url("/assets/font/GoogleSansDisplay-Bold-v1.27.ttf");
 };
 `;
 
