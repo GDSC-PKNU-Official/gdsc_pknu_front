@@ -1,19 +1,31 @@
 /* eslint-disable max-depth */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import bezierEasing from "https://cdn.skypack.dev/bezier-easing@2.1.0";
 import styled, { keyframes } from 'styled-components';
-import { fontSizes } from '../../styles/font';
+import IntroGDSC from './IntroGDSC';
 
 const upDown = keyframes`
     from{
-        transform: translatey(0px);
+      transform: translatey(-20px);
     }
     to{
-        transform: translatey(-20px);
+      transform: translatey(0px);
+    }
+`;
+
+const changeBackground = keyframes`
+    from {
+      background-color: white;
+    }
+    to {
+      background-color: rgb(32, 33, 36);
     }
 `;
 
 const IntroduceContainer = styled.div`
+    background-color: rgb(32, 33, 36);
+    animation: ${changeBackground} 1s alternate;
+    color: white;
 `;
 
 const IntroduceWrapper = styled.div`
@@ -21,6 +33,9 @@ const IntroduceWrapper = styled.div`
     top: 0;
     width: 100%;
     height: 100vh;
+`;
+
+const IntroGDSCWrapper = styled.div`
 `;
 
 const SlideContainer = styled.div`
@@ -39,17 +54,25 @@ const Slide = styled.div`
 `;
 
 const Scdown = styled.div`
-    position: absolute;
+    position: fixed;
     padding: 40px 0;
-    font-size: ${fontSizes['3xl']};
+    animation: ${upDown} 1.4s infinite ease-in-out;
     width: 100%;
     height: 50px;
     text-align: center;
-    bottom: 0px;
+    bottom: 20px;
 `;
 
-const ScdownText = styled.div`
-    animation: ${upDown} 1.4s infinite ease-in-out alternate;
+const ScdownImg = styled.div`
+  position: absolute;
+  left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
 `;
 
 const SlideBigText = styled.div`
@@ -62,8 +85,6 @@ const SlideBigText = styled.div`
     text-align: center;
 `;
 
-
-
 const ease = bezierEasing(0.25, 0.1, 0.25, 1.0);
 const midSlow = bezierEasing(0, 0.7, 1, 0.3);
 const easeIn = bezierEasing(0.38, 0.01, 0.78, 0.13);
@@ -72,6 +93,16 @@ let arr;
 const def = {
     height: 7100,
     elements: {
+        gdscLogo: {
+          top: 0,
+          bottom: 1000,
+          topStyle: {
+            opacity: 1
+          },
+          bottomStyle: {
+            opacity: 0
+          },
+        },
         sl1: {
             top: 500,
             bottom: 1900,
@@ -118,6 +149,19 @@ const def = {
         },
     },
     animations: {        // 애니메이션을 적용할 요소. 애니메이션은 여러 개가 될 수 있기에 배열로 처리 
+        gdscLogo: [
+          {
+            top: 600,
+            bottom: 1000,
+            easing: easeIn,
+            styles: {
+              opacity: {
+                topValue: 1,
+                bottomValue: 0
+              }
+            }
+          }
+        ],
         sl1: [
             {
                 top: 500,   // 시작점
@@ -263,7 +307,6 @@ const applyStyles = (currentPos, refname, styles, r, unit = "px") => {
 
 const applyAllAnimation = (currentPos, refname) => {
     const animations = def.animations[refname];
-    console.log(animations);
     if (!animations) return;
     for (const animation of animations) {
         const { top: a_top, bottom: a_bottom, easing, styles } = animation;
@@ -290,6 +333,9 @@ let enabled = new Map();
 let disabled = new Map();
 
 function Introduce() {
+    const [loading, setLoading] = useState(true);
+
+    const gdscLogo = useRef();
     const stickyContainer = useRef();
     const sl1 = useRef();
     const sl2 = useRef();
@@ -297,6 +343,7 @@ function Introduce() {
     const scdown = useRef();
 
     arr = new Map([
+        ['gdscLogo', gdscLogo],
         ['sl1', sl1],
         ['sl2', sl2],
         ['sl3', sl3],
@@ -305,7 +352,9 @@ function Introduce() {
 
     const initAnimation = () => {
         // Sticky Conainer 의 높이를 설정함.
-        stickyContainer.current.style.height = `${def.height}px`;
+        setTimeout(() => {
+          stickyContainer.current.style.height = `${def.height}px`;
+        }, 4000);
     
         // disabled, enabled 를 비움.
         disabled.clear();
@@ -339,7 +388,6 @@ function Introduce() {
         // 현재 스크롤 위치 파악
         const scrollTop = window.scrollY || window.pageYOffset;
         const currentPos = scrollTop + window.innerHeight / 2;  // 현재 화면의 중앙을 가리킴 
-        console.log(scrollTop);
     
         // disabled 순회하며 활성화할 요소 찾기.
         disabled.forEach((obj, refname) => {
@@ -367,12 +415,12 @@ function Introduce() {
             else if (currentPos >= bottom) {
                 Object.keys(bottomStyle).forEach((styleName) => {
                     applyStyle(arr.get(refname), styleName, bottomStyle[styleName]);
-                    // this.$refs[refname].style[styleName] = bottomStyle[styleName];
                 });
             }
     
             // 리스트에서 삭제하고 disabled로 옮김.
-            disabled.set(refname, obj);
+            if(refname!=='gdscLogo')
+              disabled.set(refname, obj);
             arr.get(refname).current.style.display = 'none';
             enabled.delete(refname);
             }
@@ -385,7 +433,10 @@ function Introduce() {
     }
 
     useEffect(() => {
-        initAnimation();
+      initAnimation();
+      setTimeout(() => {
+          setLoading(false);
+        }, 4000);
 
         window.addEventListener('scroll', onScroll);
         return () => {
@@ -396,28 +447,33 @@ function Introduce() {
     return (
         <IntroduceContainer ref={stickyContainer}>
             <IntroduceWrapper>
-                <SlideContainer>
-                    <Slide ref={sl1}>
-                        안녕하세요
-                    </Slide>
-                <Scdown ref={scdown}>
-                    <ScdownText>
-                        아래로 스크롤하세요.                    
-                    </ScdownText>
-                </Scdown>
-                <Slide ref={sl2}>
-                    <SlideBigText>
-                        처음 뵙겠습니다
-                    </SlideBigText>
+            <SlideContainer>
+              <IntroGDSCWrapper ref={gdscLogo}>
+                <IntroGDSC />
+              </IntroGDSCWrapper>
+                <Slide ref={sl1}>
+                    안녕하세요
                 </Slide>
-                <Slide ref={sl3}>
-                    <SlideBigText>
-                        동쪽에서 새로운 해가...
-                    </SlideBigText>
-                </Slide>
-                </SlideContainer>
-            </IntroduceWrapper>
-        </IntroduceContainer>
+              <Scdown ref={scdown}>
+                  {
+                    !loading ? 
+                    (<ScdownImg>
+                    </ScdownImg>) : null
+                  }
+              </Scdown>
+              <Slide ref={sl2}>
+                  <SlideBigText>
+                      처음 뵙겠습니다
+                  </SlideBigText>
+              </Slide>
+              <Slide ref={sl3}>
+                  <SlideBigText>
+                      동쪽에서 새로운 해가...
+                  </SlideBigText>
+              </Slide>
+            </SlideContainer>
+        </IntroduceWrapper>
+      </IntroduceContainer>
     )
 }
 

@@ -5,7 +5,6 @@ import Footer from '../common/footer/Footer';
 // import { color } from '../../styles/color';
 import Homepage from './homepage/HomePage';
 import SecondPage from './secondpage/SecondPage';
-import TestPage from './testpage/Testpage';
 import ThirdPage from './thirdpage/ThirdPage';
 
 const MainpageContainer = styled.div`
@@ -36,7 +35,6 @@ function Mainpage() {
                     <Homepage />
                     <SecondPage />
                     <ThirdPage />
-                    <TestPage />
                     <Footer />
                 </div>
             </Suspense>
