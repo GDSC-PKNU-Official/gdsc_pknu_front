@@ -1,8 +1,10 @@
 /* eslint-disable max-depth */
 import React, { useEffect, useRef, useState } from 'react';
 import bezierEasing from "https://cdn.skypack.dev/bezier-easing@2.1.0";
+import { slideText } from './IntroduceSlideText';
 import styled, { keyframes } from 'styled-components';
 import IntroGDSC from './IntroGDSC';
+import { fontSizes } from '../../styles/font';
 
 const upDown = keyframes`
     from{
@@ -23,6 +25,8 @@ const changeBackground = keyframes`
 `;
 
 const IntroduceContainer = styled.div`
+    white-space: pre-wrap;
+    font-size: ${fontSizes['5xl']};
     background-color: rgb(32, 33, 36);
     animation: ${changeBackground} 1s alternate;
     color: white;
@@ -39,6 +43,7 @@ const IntroGDSCWrapper = styled.div`
 `;
 
 const SlideContainer = styled.div`
+    font-family: 'googleSansDisplayRegular';
     position: relative;
     display: flex;
     align-items: center;
@@ -51,6 +56,13 @@ const Slide = styled.div`
     position: absolute;
     display: block;
     z-index: 0;
+    margin: 0;
+    font-size: 45px;
+    font-weight: bold;
+    line-height: 1.35;
+    letter-spacing: -1.5px;
+    word-spacing: 1.5px;
+    text-align: center;
 `;
 
 const Scdown = styled.div`
@@ -75,16 +87,6 @@ const ScdownImg = styled.div`
     transform: rotate(-45deg);
 `;
 
-const SlideBigText = styled.div`
-    margin: 0;
-    font-size: 45px;
-    font-weight: bold;
-    line-height: 1.35;
-    letter-spacing: -1.5px;
-    word-spacing: 1.5px;
-    text-align: center;
-`;
-
 const ease = bezierEasing(0.25, 0.1, 0.25, 1.0);
 const midSlow = bezierEasing(0, 0.7, 1, 0.3);
 const easeIn = bezierEasing(0.38, 0.01, 0.78, 0.13);
@@ -95,7 +97,7 @@ const def = {
     elements: {
         gdscLogo: {
           top: 0,
-          bottom: 1000,
+          bottom: 900,
           topStyle: {
             opacity: 1
           },
@@ -104,8 +106,8 @@ const def = {
           },
         },
         sl1: {
-            top: 500,
-            bottom: 1900,
+            top: 900,
+            bottom: 2300,
             topStyle: {         // 해당 요소의 위쪽에서 시작하고자 할 때 초기화되는 스타일
                 opacity: 0,
                 translateY: -60,    // 기본 위치는 중앙이므로 중심에서 떨어진 거리를 뜻하게 됨
@@ -117,7 +119,7 @@ const def = {
         },
         scdown: {
             top: 0,
-            bottom: 1000,
+            bottom: 7000,
             topStyle: {
               opacity: 1
             },
@@ -126,8 +128,8 @@ const def = {
             },
         },
         sl2: {
-            top: 1900,
-            bottom: 3200,
+            top: 2400,
+            bottom: 3700,
             topStyle: {
               opacity: 0,
               translateY: -60
@@ -138,8 +140,8 @@ const def = {
             }
         },
           sl3: {
-            top: 3300,
-            bottom: 4600,
+            top: 3800,
+            bottom: 5100,
             topStyle: {
               opacity: 0
             },
@@ -151,8 +153,8 @@ const def = {
     animations: {        // 애니메이션을 적용할 요소. 애니메이션은 여러 개가 될 수 있기에 배열로 처리 
         gdscLogo: [
           {
-            top: 600,
-            bottom: 1000,
+            top: 700,
+            bottom: 900,
             easing: easeIn,
             styles: {
               opacity: {
@@ -164,8 +166,8 @@ const def = {
         ],
         sl1: [
             {
-                top: 500,   // 시작점
-                bottom: 800,    // 끝점
+                top: 900,   // 시작점
+                bottom: 2300,    // 끝점
                 easing: midSlow,    // 가운데를 느려지게 하는 Easing Function   
                 styles: {
                     translateY: {
@@ -175,8 +177,8 @@ const def = {
                 }
             },
             {
-                top: 500,
-                bottom: 800,
+                top: 900,
+                bottom: 1200,
                 easing: ease,
                 styles: {
                     opacity: {
@@ -186,8 +188,8 @@ const def = {
                 }
             },
             {
-                top: 1400,
-                bottom: 1900,
+                top: 1800,
+                bottom: 2300,
                 easing: easeIn,
                 styles: {
                   opacity: {
@@ -199,8 +201,8 @@ const def = {
         ],
         scdown: [
             {
-              top: 600,
-              bottom: 1000,
+              top: 6500,
+              bottom: 7000,
               easing: easeIn,
               styles: {
                 opacity: {
@@ -212,8 +214,8 @@ const def = {
           ],
         sl2: [
             {
-              top: 1900,
-              bottom: 3200,
+              top: 2400,
+              bottom: 3700,
               easing: midSlow,
               styles: {
                 translateY: {
@@ -223,8 +225,8 @@ const def = {
               }
             },
             {
-              top: 1900,
-              bottom: 2500,
+              top: 2400,
+              bottom: 3000,
               easing: ease,
               styles: {
                 opacity: {
@@ -234,8 +236,8 @@ const def = {
               }
             },
             {
-              top: 2600,
-              bottom: 3200,
+              top: 3100,
+              bottom: 3700,
               easing: easeIn,
               styles: {
                 opacity: {
@@ -247,8 +249,8 @@ const def = {
           ],
           sl3: [
             {
-              top: 3300,
-              bottom: 4600,
+              top: 3800,
+              bottom: 5100,
               easing: midSlow,
               styles: {
                 translateY: {
@@ -258,8 +260,8 @@ const def = {
               }
             },
             {
-              top: 3300,
-              bottom: 3900,
+              top: 3800,
+              bottom: 4400,
               easing: ease,
               styles: {
                 opacity: {
@@ -269,8 +271,8 @@ const def = {
               }
             },
             {
-              top: 4000,
-              bottom: 4600,
+              top: 4500,
+              bottom: 5100,
               easing: easeIn,
               styles: {
                 opacity: {
@@ -334,7 +336,7 @@ let disabled = new Map();
 
 function Introduce() {
     const [loading, setLoading] = useState(true);
-
+    let lastScrollY = 0;
     const gdscLogo = useRef();
     const stickyContainer = useRef();
     const sl1 = useRef();
@@ -388,7 +390,13 @@ function Introduce() {
         // 현재 스크롤 위치 파악
         const scrollTop = window.scrollY || window.pageYOffset;
         const currentPos = scrollTop + window.innerHeight / 2;  // 현재 화면의 중앙을 가리킴 
-    
+        if(scrollTop < 900) {
+          if(scrollTop < lastScrollY) {
+            return;
+          }
+        lastScrollY = scrollTop;
+        }
+          
         // disabled 순회하며 활성화할 요소 찾기.
         disabled.forEach((obj, refname) => {
             // 만약 칸에 있다면 해당 요소 활성화
@@ -452,7 +460,7 @@ function Introduce() {
                 <IntroGDSC />
               </IntroGDSCWrapper>
                 <Slide ref={sl1}>
-                    안녕하세요
+                  {slideText[0].text}
                 </Slide>
               <Scdown ref={scdown}>
                   {
@@ -462,14 +470,10 @@ function Introduce() {
                   }
               </Scdown>
               <Slide ref={sl2}>
-                  <SlideBigText>
-                      처음 뵙겠습니다
-                  </SlideBigText>
+                {slideText[1].text}
               </Slide>
               <Slide ref={sl3}>
-                  <SlideBigText>
-                      동쪽에서 새로운 해가...
-                  </SlideBigText>
+                {slideText[2].text}
               </Slide>
             </SlideContainer>
         </IntroduceWrapper>
