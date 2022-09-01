@@ -85,7 +85,7 @@ function IntroGDSC() {
                 <SVG></SVG>
             </GDSCLogo>
             <GDSCText>
-                GDSC 소개
+                GDSC 소개페이지
             </GDSCText>
         </GDSCAppear>
     )

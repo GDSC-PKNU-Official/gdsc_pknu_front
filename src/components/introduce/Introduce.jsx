@@ -4,7 +4,8 @@ import bezierEasing from "https://cdn.skypack.dev/bezier-easing@2.1.0";
 import { slideText } from './IntroduceSlideText';
 import styled, { keyframes } from 'styled-components';
 import IntroGDSC from './IntroGDSC';
-import { fontSizes } from '../../styles/font';
+import { fontSizes, fontWeights } from '../../styles/font';
+import space from '../../styles/space';
 
 const upDown = keyframes`
     from{
@@ -26,7 +27,7 @@ const changeBackground = keyframes`
 
 const IntroduceContainer = styled.div`
     white-space: pre-wrap;
-    font-size: ${fontSizes['5xl']};
+    font-size: ${fontSizes['7xl']};
     background-color: rgb(32, 33, 36);
     animation: ${changeBackground} 1s alternate;
     color: white;
@@ -63,6 +64,15 @@ const Slide = styled.div`
     letter-spacing: -1.5px;
     word-spacing: 1.5px;
     text-align: center;
+`;
+
+const Text = styled.div`
+`;
+
+const SmallText = styled.div`
+  margin-top: ${space[10]};
+  font-size: ${fontSizes['5xl']};
+  font-weight: ${fontWeights.normal};
 `;
 
 const Scdown = styled.div`
@@ -139,9 +149,9 @@ const def = {
               translateY: 60
             }
         },
-          sl3: {
+          sl3_1: {
             top: 3800,
-            bottom: 5100,
+            bottom: 6000,
             topStyle: {
               opacity: 0
             },
@@ -149,6 +159,36 @@ const def = {
               opacity: 0
             }
         },
+        sl3_2: {
+          top: 4100,
+          bottom: 6000,
+          topStyle: {
+            opacity: 0
+          },
+          bottomStyle: {
+            opacity: 0
+          }
+        },
+        sl3_3: {
+          top: 4400,
+          bottom: 6000,
+          topStyle: {
+            opacity: 0
+          },
+          bottomStyle: {
+            opacity: 0
+          }
+      },
+      sl3_4: {
+        top: 4700,
+        bottom: 6000,
+        topStyle: {
+          opacity: 0
+        },
+        bottomStyle: {
+          opacity: 0
+        }
+  },
     },
     animations: {        // 애니메이션을 적용할 요소. 애니메이션은 여러 개가 될 수 있기에 배열로 처리 
         gdscLogo: [
@@ -247,10 +287,10 @@ const def = {
               }
             }
           ],
-          sl3: [
+          sl3_1: [
             {
               top: 3800,
-              bottom: 5100,
+              bottom: 6000,
               easing: midSlow,
               styles: {
                 translateY: {
@@ -271,8 +311,8 @@ const def = {
               }
             },
             {
-              top: 4500,
-              bottom: 5100,
+              top: 5500,
+              bottom: 6000,
               easing: easeIn,
               styles: {
                 opacity: {
@@ -281,6 +321,111 @@ const def = {
                 }
               }
             }
+        ],
+        sl3_2: [
+          {
+            top: 4100,
+            bottom: 6000,
+            easing: midSlow,
+            styles: {
+              translateY: {
+                topValue: 60,
+                bottomValue: -60
+              }
+            }
+          },
+          {
+            top: 4100,
+            bottom: 4400,
+            easing: ease,
+            styles: {
+              opacity: {
+                topValue: 0,
+                bottomValue: 1
+              }
+            }
+          },
+          {
+            top: 5500,
+            bottom: 6000,
+            easing: easeIn,
+            styles: {
+              opacity: {
+                topValue: 1,
+                bottomValue: 0
+              }
+            }
+          }
+        ],
+        sl3_3: [
+          {
+            top: 4400,
+            bottom: 6000,
+            easing: midSlow,
+            styles: {
+              translateY: {
+                topValue: 60,
+                bottomValue: -60
+              }
+            }
+          },
+          {
+            top: 4400,
+            bottom: 4700,
+            easing: ease,
+            styles: {
+              opacity: {
+                topValue: 0,
+                bottomValue: 1
+              }
+            }
+          },
+          {
+            top: 5500,
+            bottom: 6000,
+            easing: easeIn,
+            styles: {
+              opacity: {
+                topValue: 1,
+                bottomValue: 0
+              }
+            }
+          }
+        ],
+        sl3_4: [
+          {
+            top: 4700,
+            bottom: 6000,
+            easing: midSlow,
+            styles: {
+              translateY: {
+                topValue: 60,
+                bottomValue: -60
+              }
+            }
+          },
+          {
+            top: 4700,
+            bottom: 5100,
+            easing: ease,
+            styles: {
+              opacity: {
+                topValue: 0,
+                bottomValue: 1
+              }
+            }
+          },
+          {
+            top: 5500,
+            bottom: 6000,
+            easing: easeIn,
+            styles: {
+              opacity: {
+                topValue: 1,
+                bottomValue: 0
+              }
+            }
+          }
         ],
     }
 };
@@ -337,11 +482,16 @@ let disabled = new Map();
 function Introduce() {
     const [loading, setLoading] = useState(true);
     let lastScrollY = 0;
+    
     const gdscLogo = useRef();
     const stickyContainer = useRef();
     const sl1 = useRef();
     const sl2 = useRef();
     const sl3 = useRef();
+    const sl3_1 = useRef();
+    const sl3_2 = useRef();
+    const sl3_3 = useRef();
+    const sl3_4 = useRef();
     const scdown = useRef();
 
     arr = new Map([
@@ -349,6 +499,10 @@ function Introduce() {
         ['sl1', sl1],
         ['sl2', sl2],
         ['sl3', sl3],
+        ['sl3_1',sl3_1],
+        ['sl3_2',sl3_2],
+        ['sl3_3',sl3_3],
+        ['sl3_4',sl3_4],
         ['scdown', scdown],
     ]);
 
@@ -459,9 +613,6 @@ function Introduce() {
               <IntroGDSCWrapper ref={gdscLogo}>
                 <IntroGDSC />
               </IntroGDSCWrapper>
-                <Slide ref={sl1}>
-                  {slideText[0].text}
-                </Slide>
               <Scdown ref={scdown}>
                   {
                     !loading ? 
@@ -469,12 +620,27 @@ function Introduce() {
                     </ScdownImg>) : null
                   }
               </Scdown>
+                <Slide ref={sl1}>
+                  {slideText[0].text}
+                </Slide>
               <Slide ref={sl2}>
                 {slideText[1].text}
               </Slide>
-              <Slide ref={sl3}>
-                {slideText[2].text}
+              <Slide>
+                  <Text ref={sl3_1}>
+                  {slideText[2].text}
+                  </Text>
+                <SmallText ref={sl3_2}>
+                  {slideText[3].text}
+                </SmallText>
+                <SmallText ref={sl3_3}>
+                  {slideText[4].text}
+                </SmallText>
+                <SmallText ref={sl3_4}>
+                  {slideText[5].text}
+                </SmallText>
               </Slide>
+              
             </SlideContainer>
         </IntroduceWrapper>
       </IntroduceContainer>
