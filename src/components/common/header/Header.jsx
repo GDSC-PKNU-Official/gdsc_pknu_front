@@ -12,10 +12,10 @@ const HeaderContainer = styled.header`
   ${vCenter};
   ${flexDirectionCol};
   position: fixed;
+  background: white;
   width: 100vw;
   height: 70px;
-  background: none;
-  z-index: 10;
+  z-index: 100;
   box-shadow: rgb(0 0 0 / 5%) 0px 6px 24px 0px, rgb(0 0 0 / 8%) 0px 0px 0px 1px;
 `;
 
