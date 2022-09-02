@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 // style 관련
@@ -7,7 +8,7 @@ import { color } from '../../../styles/color';
 // components 관련 파일
 
 const HeaderLink = styled.li`
-  margin-right: 13px;
+  margin-right: 40px;
   text-align: center;
 
   &:nth-child(2) {
@@ -19,7 +20,9 @@ const HeaderLink = styled.li`
   & + button {
     margin-left: 1rem;
   }
-
+  &: hover {
+    cursor: pointer;
+  }
   font-size: 1.5rem;
 `;
 
@@ -31,14 +34,25 @@ const HeaderLinkUl = styled.ul`
 function HeaderLinkGroup() {
   return (
     <HeaderLinkUl>
-      <HeaderLink variant="ghost" to="#" bgcolor={color.black} islink="true">
-        Event
+      <HeaderLink bgcolor={color.black}>
+        <Link to="/#">
+          소개
+        </Link>
       </HeaderLink>
-      <HeaderLink variant="ghost" to="#" bgcolor={color.black} islink="true">
-        Team
+      <HeaderLink bgcolor={color.black} >
+        <Link to="/member">
+          멤버
+        </Link>
       </HeaderLink>
-      <HeaderLink variant="ghost" to="#" bgcolor={color.black} islink="true">
-        FAQ
+      <HeaderLink bgcolor={color.black}>
+        <Link to="/#">
+          행사
+        </Link>
+      </HeaderLink>
+      <HeaderLink bgcolor={color.black}>
+        <Link to="/#">
+          FAQ
+        </Link>
       </HeaderLink>
     </HeaderLinkUl>
   );

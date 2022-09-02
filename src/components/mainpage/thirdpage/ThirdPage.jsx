@@ -16,12 +16,10 @@ const ThirdPageContainer = styled.div`
 `;
 
 const ThirdPageCardGroup = styled.div`
-    display:flex;
     padding: ${space[10]} 0;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
 `;
+
 function ThirdPage(){
     return(
         <ThirdPageContainer>
