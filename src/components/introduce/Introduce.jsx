@@ -6,6 +6,7 @@ import styled, { keyframes } from 'styled-components';
 import IntroGDSC from './IntroGDSC';
 import { fontSizes, fontWeights } from '../../styles/font';
 import space from '../../styles/space';
+import { Link } from 'react-router-dom';
 
 const upDown = keyframes`
     from{
@@ -66,6 +67,14 @@ const Slide = styled.div`
     text-align: center;
 `;
 
+const GoHomeSlide = styled.div`
+    z-index: 1;
+    margin-bottom: 900px;
+    &: hover {
+      cursor: pointer;
+    }
+`;
+
 const Text = styled.div`
 `;
 
@@ -108,6 +117,11 @@ const Img = styled.img`
     clip: rect(0, 200px, 200px, 0);
 `;
 
+const GDSCImg = styled.img`
+    width: 100px;
+    height: 50px;
+`;
+
 const ease = bezierEasing(0.25, 0.1, 0.25, 1.0);
 const midSlow = bezierEasing(0, 0.7, 1, 0.3);
 const easeIn = bezierEasing(0.38, 0.01, 0.78, 0.13);
@@ -126,6 +140,16 @@ const def = {
           bottomStyle: {
             opacity: 0
           },
+        },
+        goHome: {
+          top: 900,
+          bottom: 16000,
+          topStyle: {
+            opacity: 0
+          },
+          bottomStyle: {
+            opacity: 1
+          }
         },
         sl1: {
             top: 900,
@@ -282,6 +306,30 @@ const def = {
               opacity: {
                 topValue: 1,
                 bottomValue: 0
+              }
+            }
+          }
+        ],
+        goHome: [
+          {
+            top: 900,
+            bottom: 1200,
+            easing: ease,
+            styles: {
+              opacity: {
+                topValue: 0,
+                bottomValue: 1
+              }
+            }
+          },
+          {
+            top: 13500,
+            bottom: 16000,
+            easing: linear,
+            styles: {
+              translateY: {
+                topValue: 0,
+                bottomValue: 450,
               }
             }
           }
@@ -816,6 +864,7 @@ function Introduce() {
     
     const gdscLogo = useRef();
     const stickyContainer = useRef();
+    const goHome = useRef();
     const sl1 = useRef();
     const sl2 = useRef();
     const sl3_1 = useRef();
@@ -832,6 +881,7 @@ function Introduce() {
     const sl_Img6 = useRef();
 
     arr = new Map([
+        ['goHome', goHome],
         ['gdscLogo', gdscLogo],
         ['sl1', sl1],
         ['sl2', sl2],
@@ -963,6 +1013,11 @@ function Introduce() {
                     </ScdownImg>) : null
                   }
               </Scdown>
+              <GoHomeSlide ref={goHome}>
+                  <Link to="/">
+                    <GDSCImg src={process.env.PUBLIC_URL + '/assets/logo/GDSC_Logo.svg'} />
+                  </Link>
+              </GoHomeSlide>
                 <Slide ref={sl1}>
                   {slideText[0].text}
                 </Slide>
