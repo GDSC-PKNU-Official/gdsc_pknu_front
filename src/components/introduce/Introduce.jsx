@@ -69,6 +69,10 @@ const Slide = styled.div`
 const Text = styled.div`
 `;
 
+const SlText = styled.div`
+    margin-bottom: 700px;
+`;
+
 const SmallText = styled.div`
   margin-top: ${space[10]};
   font-size: ${fontSizes['5xl']};
@@ -96,14 +100,22 @@ const ScdownImg = styled.div`
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
 `;
+      
+const Img = styled.img`
+    width: 700px;
+    height: 500px;
+    margin-left: 30px;
+    clip: rect(0, 200px, 200px, 0);
+`;
 
 const ease = bezierEasing(0.25, 0.1, 0.25, 1.0);
 const midSlow = bezierEasing(0, 0.7, 1, 0.3);
 const easeIn = bezierEasing(0.38, 0.01, 0.78, 0.13);
+const linear = bezierEasing(1,1,1,1);
 let arr;
 
 const def = {
-    height: 7100,
+    height: 16000,
     elements: {
         gdscLogo: {
           top: 0,
@@ -129,7 +141,7 @@ const def = {
         },
         scdown: {
             top: 0,
-            bottom: 7000,
+            bottom: 9500,
             topStyle: {
               opacity: 1
             },
@@ -188,7 +200,77 @@ const def = {
         bottomStyle: {
           opacity: 0
         }
-  },
+    },
+      sl_Img_Text: {
+        top: 6100,
+        bottom: 13700,
+        topStyle: {
+          opacity: 0
+        },
+        bottomStyle: {
+          opacity: 0
+        }
+      },
+      sl_Img1: {
+        top: 6100,
+        bottom: 7700,
+        topStyle: {
+          opacity: 0
+        },
+        bottomStyle: {
+          opacity: 0
+        }
+      },
+      sl_Img2: {
+        top: 7300,
+        bottom: 8900,
+        topStyle: {
+          opacity: 0
+        },
+        bottomStyle: {
+          opacity: 0
+        }
+      },
+      sl_Img3: {
+        top: 8500,
+        bottom: 10100,
+        topStyle: {
+          opacity: 0
+        },
+        bottomStyle: {
+          opacity: 0
+        }
+      },
+      sl_Img4: {
+        top: 9700,
+        bottom: 11300,
+        topStyle: {
+          opacity: 0
+        },
+        bottomStyle: {
+          opacity: 0
+        }
+      },
+      sl_Img5: {
+        top: 10900,
+        bottom: 12500,
+        topStyle: {
+          opacity: 0
+        },
+        bottomStyle: {
+          opacity: 0
+        }
+      },
+      sl_Img6: {
+        top: 12100,
+        bottom: 13700,
+        topStyle: {
+          opacity: 0
+        },
+        bottomStyle: {
+          opacity: 0
+        }
+      }
     },
     animations: {        // 애니메이션을 적용할 요소. 애니메이션은 여러 개가 될 수 있기에 배열로 처리 
         gdscLogo: [
@@ -241,8 +323,8 @@ const def = {
         ],
         scdown: [
             {
-              top: 6500,
-              bottom: 7000,
+              top: 9000,
+              bottom: 9500,
               easing: easeIn,
               styles: {
                 opacity: {
@@ -427,6 +509,240 @@ const def = {
             }
           }
         ],
+        sl_Img_Text: [
+          {
+            top: 6100,
+            bottom: 6300,
+            easing: ease,
+            styles: {
+              opacity: {
+                topValue: 0,
+                bottomValue: 1
+              }
+            }
+          },
+          {
+            top: 13200,
+            bottom: 13700,
+            easing: easeIn,
+            styles: {
+              opacity: {
+                topValue: 1,
+                bottomValue: 0
+              }
+            }
+          }
+        ],
+        sl_Img1: [
+          {
+            top: 6100,
+            bottom: 7700,
+            easing: linear,
+            styles: {
+              translateX: {
+                topValue: 500,
+                bottomValue: -500,
+              }
+            }
+          },
+          {
+            top: 6100,
+            bottom: 6500,
+            easing: ease,
+            styles: {
+              opacity: {
+                topValue: 0,
+                bottomValue: 1
+              }
+            }
+          },
+          {
+            top:7300,
+            bottom: 7700,
+            easing: easeIn,
+            styles: {
+              opacity: {
+                topValue: 1,
+                bottomValue: 0
+              }
+            }
+          }
+        ],
+        sl_Img2: [
+          {
+            top: 7300,
+            bottom: 8900,
+            easing: linear,
+            styles: {
+              translateX: {
+                topValue: 500,
+                bottomValue: -500,
+              }
+            }
+          },
+          {
+            top: 7300,
+            bottom: 7700,
+            easing: ease,
+            styles: {
+              opacity: {
+                topValue: 0,
+                bottomValue: 1
+              }
+            }
+          },
+          {
+            top:8500,
+            bottom: 8900,
+            easing: easeIn,
+            styles: {
+              opacity: {
+                topValue: 1,
+                bottomValue: 0
+              }
+            }
+          }
+        ],
+        sl_Img3: [
+          {
+            top: 8500,
+            bottom: 10100,
+            easing: linear,
+            styles: {
+              translateX: {
+                topValue: 500,
+                bottomValue: -500,
+              }
+            }
+          },
+          {
+            top: 8500,
+            bottom: 8900,
+            easing: ease,
+            styles: {
+              opacity: {
+                topValue: 0,
+                bottomValue: 1
+              }
+            }
+          },
+          {
+            top:9700,
+            bottom: 10100,
+            easing: easeIn,
+            styles: {
+              opacity: {
+                topValue: 1,
+                bottomValue: 0
+              }
+            }
+          }
+        ],
+        sl_Img4: [
+          {
+            top: 9700,
+            bottom: 11300,
+            easing: linear,
+            styles: {
+              translateX: {
+                topValue: 500,
+                bottomValue: -500,
+              }
+            }
+          },
+          {
+            top: 9700,
+            bottom: 10100,
+            easing: ease,
+            styles: {
+              opacity: {
+                topValue: 0,
+                bottomValue: 1
+              }
+            }
+          },
+          {
+            top:10900,
+            bottom: 11300,
+            easing: easeIn,
+            styles: {
+              opacity: {
+                topValue: 1,
+                bottomValue: 0
+              }
+            }
+          }
+        ],
+        sl_Img5: [
+          {
+            top: 10900,
+            bottom: 12500,
+            easing: linear,
+            styles: {
+              translateX: {
+                topValue: 500,
+                bottomValue: -500,
+              }
+            }
+          },
+          {
+            top: 10900,
+            bottom: 11400,
+            easing: ease,
+            styles: {
+              opacity: {
+                topValue: 0,
+                bottomValue: 1
+              }
+            }
+          },
+          {
+            top:12100,
+            bottom: 12500,
+            easing: easeIn,
+            styles: {
+              opacity: {
+                topValue: 1,
+                bottomValue: 0
+              }
+            }
+          }
+        ],
+        sl_Img6: [
+          {
+            top: 12100,
+            bottom: 13700,
+            easing: linear,
+            styles: {
+              translateX: {
+                topValue: 500,
+                bottomValue: -500,
+              }
+            }
+          },
+          {
+            top: 12100,
+            bottom: 12500,
+            easing: ease,
+            styles: {
+              opacity: {
+                topValue: 0,
+                bottomValue: 1
+              }
+            }
+          },
+          {
+            top:13200,
+            bottom: 13700,
+            easing: easeIn,
+            styles: {
+              opacity: {
+                topValue: 1,
+                bottomValue: 0
+              }
+            }
+          }
+        ],
     }
 };
 
@@ -475,6 +791,21 @@ const applyAllAnimation = (currentPos, refname) => {
         }
     }
 }
+            
+// const imgSource = [
+//   "retrospect.jpg", "techTalk.jpg", "onBoarding.png", "ideaThon.png", "hackerThon.png", "MT.png"
+// ]
+
+// const images = () => {
+//   const image = imgSource.map(img => {
+//       const source = `/assets/slide/${img}`;
+//       return (
+//           <Img src={process.env.PUBLIC_URL + source} key={img} />
+//       )
+//   })
+//   console.log(image);
+//   return image;
+// }
 
 let enabled = new Map();
 let disabled = new Map();
@@ -487,23 +818,35 @@ function Introduce() {
     const stickyContainer = useRef();
     const sl1 = useRef();
     const sl2 = useRef();
-    const sl3 = useRef();
     const sl3_1 = useRef();
     const sl3_2 = useRef();
     const sl3_3 = useRef();
     const sl3_4 = useRef();
     const scdown = useRef();
+    const sl_Img_Text = useRef();
+    const sl_Img1 = useRef();
+    const sl_Img2 = useRef();
+    const sl_Img3 = useRef();
+    const sl_Img4 = useRef();
+    const sl_Img5 = useRef();
+    const sl_Img6 = useRef();
 
     arr = new Map([
         ['gdscLogo', gdscLogo],
         ['sl1', sl1],
         ['sl2', sl2],
-        ['sl3', sl3],
         ['sl3_1',sl3_1],
         ['sl3_2',sl3_2],
         ['sl3_3',sl3_3],
         ['sl3_4',sl3_4],
         ['scdown', scdown],
+        ['sl_Img_Text', sl_Img_Text],
+        ['sl_Img1', sl_Img1],
+        ['sl_Img2', sl_Img2],
+        ['sl_Img3', sl_Img3],
+        ['sl_Img4', sl_Img4],
+        ['sl_Img5', sl_Img5],
+        ['sl_Img6', sl_Img6],
     ]);
 
     const initAnimation = () => {
@@ -640,7 +983,29 @@ function Introduce() {
                   {slideText[5].text}
                 </SmallText>
               </Slide>
-              
+              <Slide ref={sl_Img_Text}>
+                <SlText>
+                  주요활동
+                </SlText>
+              </Slide>
+              <Slide ref={sl_Img1}>
+                  <Img src="/assets/slide/retrospect.jpg" />
+              </Slide>
+              <Slide ref={sl_Img2}>
+                    <Img src="/assets/slide/techTalk.jpg" />
+              </Slide>
+              <Slide ref={sl_Img3}>
+                    <Img src="/assets/slide/onBoarding.png" />
+              </Slide>
+              <Slide ref={sl_Img4}>
+                    <Img src="/assets/slide/ideaThon.png" />
+              </Slide>
+              <Slide ref={sl_Img5}>
+                    <Img src="/assets/slide/hackerThon.png" />
+              </Slide>
+              <Slide ref={sl_Img6}>
+                    <Img src="/assets/slide/MT.png" />
+              </Slide>
             </SlideContainer>
         </IntroduceWrapper>
       </IntroduceContainer>
