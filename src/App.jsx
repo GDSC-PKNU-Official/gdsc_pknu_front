@@ -21,8 +21,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route paht="/introduce" element={<Introduce />} />
-        <Route path="/member" element={<Member/>} />
+        <Route path="/introduce" element={<Introduce />} />
+        <Route path="/member" element={<Member />} />
       </Routes>
     </ThemeProvider>
   );

@@ -35,7 +35,7 @@ function HeaderLinkGroup() {
   return (
     <HeaderLinkUl>
       <HeaderLink bgcolor={color.black}>
-        <Link to="/#">
+        <Link to="/introduce">
           소개
         </Link>
       </HeaderLink>
