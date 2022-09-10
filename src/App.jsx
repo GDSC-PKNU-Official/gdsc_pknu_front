@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Home from './pages/Home';
 import Member from './pages/Member';
+import Faq from './pages/Faq';
 
 // style 관련 파일
 import GlobalStyle from './styles/global';
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/member" element={<Member/>} />
+        <Route path="/faq" element={<Faq/>} />
       </Routes>
     </ThemeProvider>
   );
