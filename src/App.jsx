@@ -9,7 +9,6 @@ import { ThemeProvider } from 'styled-components';
 import Introduce from './components/introduce/Introduce';
 import Home from './pages/Home';
 import Member from './pages/Member';
-import Faq from './pages/Faq';
 
 // style 관련 파일
 import GlobalStyle from './styles/global';
@@ -22,9 +21,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/member" element={<Member/>} />
-        <Route path="/faq" element={<Faq/>} />
         <Route path="/introduce" element={<Introduce />} />
+        <Route path="/member" element={<Member />} />
       </Routes>
     </ThemeProvider>
   );

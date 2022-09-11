@@ -50,7 +50,7 @@ function HeaderLinkGroup() {
         </Link>
       </HeaderLink>
       <HeaderLink bgcolor={color.black}>
-        <Link to="/faq">
+        <Link to="/#">
           FAQ
         </Link>
       </HeaderLink>
