@@ -14,6 +14,7 @@ const FooterContainer = styled.footer`
     padding-top: ${space[10]};
     padding-bottom: ${space[10]};
     background: ${color.gray[300]};
+    scroll-snap-align: start;
 `;
 
 const FooterWrapper = styled.div`
