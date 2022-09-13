@@ -126,6 +126,8 @@ const ease = bezierEasing(0.25, 0.1, 0.25, 1.0);
 const midSlow = bezierEasing(0, 0.7, 1, 0.3);
 const easeIn = bezierEasing(0.38, 0.01, 0.78, 0.13);
 const linear = bezierEasing(1,1,1,1);
+const currentURL  = window.location.href.split("introduce")[0];
+
 let arr;
 
 const def = {
@@ -839,21 +841,6 @@ const applyAllAnimation = (currentPos, refname) => {
         }
     }
 }
-            
-// const imgSource = [
-//   "retrospect.jpg", "techTalk.jpg", "onBoarding.png", "ideaThon.png", "hackerThon.png", "MT.png"
-// ]
-
-// const images = () => {
-//   const image = imgSource.map(img => {
-//       const source = `/assets/slide/${img}`;
-//       return (
-//           <Img src={process.env.PUBLIC_URL + source} key={img} />
-//       )
-//   })
-//   console.log(image);
-//   return image;
-// }
 
 let enabled = new Map();
 let disabled = new Map();
@@ -986,6 +973,11 @@ function Introduce() {
             }
         });
     }
+    const escKeyGotoHome = (e) => {
+        if(e.keyCode === 27) {
+            window.location.replace(currentURL);
+        }
+    }
 
     useEffect(() => {
       initAnimation();
@@ -993,8 +985,10 @@ function Introduce() {
           setLoading(false);
         }, 4000);
 
+        window.addEventListener('keydown', escKeyGotoHome);
         window.addEventListener('scroll', onScroll);
         return () => {
+            window.addEventListener('keydown', escKeyGotoHome);
             window.addEventListener('scroll', onScroll);
         }
     })    
