@@ -13,7 +13,7 @@ const FaqContainer = styled.div`
 
 const FaqWrapper = styled.div`
     width:100%;
-    max-width:1300px;
+    max-width:1270px;
     padding:150px;
     margin: 0 auto;
 `;
@@ -21,8 +21,9 @@ const FaqWrapper = styled.div`
 const FaqTitle = styled.div`
     font-size: ${fontSizes['6xl']};
     margin-bottom: ${space[20]};
-    padding: ${space[4]} ${space[8]};
+    padding: ${space[4]} ${space[2]} ${space[4]} ${space[16]};
     border-left : ${space[4]} solid ${color.gdscBlue};
+    white-space : nowrap;
 `;
 
 const FaqText = styled.span`
